@@ -1,9 +1,11 @@
 package lt.codeacademy.atmintineapi.model;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -11,8 +13,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "comment")
+public class Comment {
 
     @Id
     @GeneratedValue
@@ -22,13 +24,5 @@ public class User {
 
     private String username;
 
-    private String name;
-
-    private String surname;
-
-    private String email;
-
-    private String phoneNumber;
-
-    private String city;
+    private String content;
 }

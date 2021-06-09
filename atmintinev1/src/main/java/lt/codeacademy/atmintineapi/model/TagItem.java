@@ -35,7 +35,6 @@ public class TagItem {
     private String realPlaceName;
 
     private String description;
-
     //    Čia privalumai tiesiog vėliavėlės.
 
     private Boolean hasShed;

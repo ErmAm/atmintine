@@ -1,6 +1,7 @@
 package lt.codeacademy.atmintineapi.controller;
 
 
+import io.swagger.annotations.Api;
 import lt.codeacademy.atmintineapi.model.Comment;
 import lt.codeacademy.atmintineapi.model.TagItem;
 import lt.codeacademy.atmintineapi.service.CommentService;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/atmintine/api/comments")
+@Api(tags="This is Comment controller")
 public class CommentController {
 
     private CommentService commentService;

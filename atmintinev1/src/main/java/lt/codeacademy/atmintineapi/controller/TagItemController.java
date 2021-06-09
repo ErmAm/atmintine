@@ -21,36 +21,36 @@ public class TagItemController {
         this.tagItemService = tagItemService;
     }
 
-//    Šitas susirenka viską viską
+    //    Šitas susirenka viską viską
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TagItem> getTagItems(){
+    public List<TagItem> getTagItems() {
         return tagItemService.getTagItems();
     }
 
     @GetMapping(value = "/{UUID}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public TagItem getTagItem(@PathVariable("UUID") UUID uuid){
+    public TagItem getTagItem(@PathVariable("UUID") UUID uuid) {
         return tagItemService.getTagItem(uuid);
     }
 
     @GetMapping(value = "/{name}/name", produces = MediaType.APPLICATION_JSON_VALUE)
-    public TagItem getTagItemByName(@PathVariable String name){
+    public TagItem getTagItemByName(@PathVariable String name) {
         return tagItemService.getTagItemByName(name);
     }
 
     @GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TagItem> searchTagItem(@RequestParam String query){
+    public List<TagItem> searchTagItem(@RequestParam String query) {
         return tagItemService.findTagItem(query);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTagItem(@Valid @RequestBody TagItem tagItem){
+    public void createTagItem(@Valid @RequestBody TagItem tagItem) {
         tagItemService.addTagItem(tagItem);
     }
 
     @DeleteMapping(value = "/{UUID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTagItem(@PathVariable("UUID") UUID uuid){
+    public void deleteTagItem(@PathVariable("UUID") UUID uuid) {
         tagItemService.delete(uuid);
     }
 
@@ -60,4 +60,4 @@ public class TagItemController {
     }
 
 
-    }
+}

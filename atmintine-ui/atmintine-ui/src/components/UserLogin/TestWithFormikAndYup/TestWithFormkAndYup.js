@@ -1,9 +1,11 @@
 // import React from 'react';
 // import Formik from "formik";
 import {Form, Formik, Field, ErrorMessage} from "formik"
-import {Input, TextField} from "@material-ui/core";
+import {Container, FormControl, FormHelperText, Grid, Input, InputLabel, Paper, TextField} from "@material-ui/core";
 import PropsState from "../../PropsState/PropsState";
 import * as Yup from "yup";
+import Button from "@material-ui/core/Button";
+import FormikInput from "../FormikInput/FormikInput";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -41,49 +43,53 @@ export default () => (
         }}
 
         validationSchema={validationSchema}
-        >
+    >
 
         {props => (
-                <>
-                    {/*TODO Čia debugas.*/}
-                    <PropsState{...props}/>
-                <Form>
+            <>
+                {/*TODO Čia debugas.*/}
+                <PropsState{...props}/>
 
-                    <div>
-                        <label htmlFor="name">Product title:</label>
-                        <Field id="name" name="name" placeholder="Type..."/>
-                        <ErrorMessage name="name" component="span"/>
-                    </div>
+                <Container maxWidth={"sm"}>
+                    <Paper elevation={3}>
+                    <Form style={{margin: 20, padding: 10}}>
 
-                    <div>
-                        <label htmlFor="price">Product price:</label>
-                        <Field id="price" name="price" placeholder="Type..."/>
-                        <ErrorMessage name="price" component="span"/>
-                    </div>
+                        <div>
+                            <FormikInput name="name" label="Product name"
+                                         error={props.touched.name && !!props.errors.name}/>
+                        </div>
 
-                    <div>
-                        <label htmlFor="quantity">Product quantity:</label>
-                        <Field id="quantity" name="quantity" placeholder="Type..."/>
-                        <ErrorMessage name="quantity" component="span"/>
-                    </div>
+                        <div>
+                            <FormikInput name="price" label="Product price"
+                                         error={props.touched.price && !!props.errors.price}/>
+                        </div>
 
-                    <div>
-                        <label htmlFor="description">Product quantity:</label>
-                        <Field id="description" name="description" placeholder="Type..." component="textarea"/>
-                        <ErrorMessage name="description" component="span"/>
-                    </div>
+                        <div>
+                            <FormikInput name="quantity" label="Product quantity"
+                                         error={props.touched.quantity && !!props.errors.quantity}/>
+                        </div>
 
+                        <div>
+                            <FormikInput name="description" label="Product description"
+                                         error={props.touched.description && !!props.errors.description}
+                                         multiline rows={3}/>
+                        </div>
 
+                        {/*<Grid container={3}>*/}
+                        {/*    <Grid item xs={3}>*/}
 
-                    {/*<label htmlFor="name"/>*/}
+                                {!props.isSubmitting ? <Button variant="contained"
+                                                               color="primary"
+                                                               type="submit">Submit</Button> :
+                                    <span>Submitting...</span>}
+                        {/*    </Grid>*/}
+                        {/*</Grid>*/}
 
-                    {/*<Field id="name" name="name" placeholder="Type..."/>*/}
-                    {/*<ErrorMessage name="name" component="div"/>*/}
+                    </Form>
+                    </Paper>
+                </Container>
 
-                    {!props.isSubmitting ? <button type="submit">Submit</button> :
-                        <span>Submitting...</span>}
-                </Form>
-                </>
+            </>
         )}
 
     </Formik>

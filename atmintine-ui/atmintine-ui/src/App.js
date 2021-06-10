@@ -7,6 +7,7 @@ import Content from "./components/Content/Content";
 import Footer from "./components/Footer/Footer";
 import {CssBaseline} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import LoginForm from "./components/UserLogin/LoginForm";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,7 +35,7 @@ function App() {
         <CssBaseline />
         <Header/>
         <Content/>
-
+        <LoginForm/>
         <Footer/>
     </div>
   );

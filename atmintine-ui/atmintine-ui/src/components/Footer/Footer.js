@@ -32,7 +32,7 @@ export default () => {
     return (
         <footer className={classes.footer}>
             <Container maxWidth="sm">
-                <Typography variant="body1">Eshop Footer</Typography>
+                <Typography variant="body1">GPS Atmintinė</Typography>
                 <Copyright/>
             </Container>
         </footer>

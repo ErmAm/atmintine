@@ -4,6 +4,8 @@ import UserRegistration from "../UserRegistration/UserRegistration";
 import {Switch, Route} from "react-router-dom"
 import LandingPage from "../../Pages/LoginPage/LandingPage";
 import RegistrationPage from "../../Pages/RegisterPage/RegistrationPage";
+import LibraryPage from "../../Pages/LibraryPage/LibraryPage";
+import ProfilePage from "../../Pages/ProfilePage/ProfilePage";
 
 
 
@@ -13,6 +15,12 @@ export default () => (
         <Switch>
             <Route exact path="/">
                 <LandingPage/>
+            </Route>
+            <Route exact path="/library">
+                <LibraryPage/>
+            </Route>
+            <Route exact path="/profile">
+                <ProfilePage/>
             </Route>
             <Route exact path="/registration">
                 <RegistrationPage/>

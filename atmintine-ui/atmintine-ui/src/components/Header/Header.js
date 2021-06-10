@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
     },
     toolbar: {
         flexWrap: 'wrap',
+    },
+    active:{
+        fontWeight: "bolder",
+        color: "blue"
     }
 }))
 
@@ -40,13 +44,30 @@ export default () => {
                             Home
                         </Link>
 
-                        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-                            Mem Library
+
+                        <Link to="/library"
+                              component={NavLink}
+                              activeClassName={classes.active}
+                              variant="button"
+                              color="textPrimary"
+                              className={classes.link}>
+                            Library
                         </Link>
+
+                        <Link to="/profile"
+                              component={NavLink}
+                              activeClassName={classes.active}
+                              variant="button"
+                              color="textPrimary"
+                              className={classes.link}>
+                            Account
+                        </Link>
+
 
                         {/*Čia truputi magija su parametrais nutinka*/}
                         <Link to="/registration"
                                     component={NavLink}
+                                    activeClassName={classes.active}
                                     variant="button"
                                     color="textPrimary"
                                     className={classes.link}>

@@ -1,12 +1,35 @@
 // import React from 'react';
 // import Formik from "formik";
 import {Form, Formik, Field, ErrorMessage} from "formik"
-import {TextField} from "@material-ui/core";
+import {Input, TextField} from "@material-ui/core";
+import PropsState from "../../PropsState/PropsState";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+    name: Yup.string()
+        .min(2, "Reiksme turi buti ilgesne nei 2 simboliai")
+        .required(),
+    price: Yup.number()
+        .positive()
+        .required(),
+    quantity: Yup.number()
+        .positive()
+        .required(),
+    description: Yup.string()
+        .max(100)
+})
+
 
 export default () => (
     // <div>Formic test</div>
     <Formik
-        initialValues={{name: ''}}
+        initialValues={{
+            name: '',
+            price: '',
+            quantity: '',
+            description: ''
+
+        }}
         onSubmit={(values, helpers) => {
             console.log('values', values)
             console.log('helpers', helpers)
@@ -17,70 +40,54 @@ export default () => (
             }, 3000)
         }}
 
-        validate={values => {
-            const errors = {}
+        validationSchema={validationSchema}
+        >
 
-            if (values.name.length < 5) {
-                errors.name = "Kažkas labai neveikia"
-            }
-
-            return errors
-        }}
-
-    >
-
-        {props => {
-            // Čia tiesiog helperis pasižiūrėti kas yra renderyje
-            // console.log("render props", props)
-            return (
-                // <form onSubmit={props.handleSubmit}>
+        {props => (
+                <>
+                    {/*TODO Čia debugas.*/}
+                    <PropsState{...props}/>
                 <Form>
-                    <label htmlFor="name"/>
-                    {/*<input id="name" onChange={props.handleChange}/>*/}
-                    <Field id="name" name="name" placeholder="Type..." component={TextField}/>
-                    <ErrorMessage name="name" component="div"/>
+
+                    <div>
+                        <label htmlFor="name">Product title:</label>
+                        <Field id="name" name="name" placeholder="Type..."/>
+                        <ErrorMessage name="name" component="span"/>
+                    </div>
+
+                    <div>
+                        <label htmlFor="price">Product price:</label>
+                        <Field id="price" name="price" placeholder="Type..."/>
+                        <ErrorMessage name="price" component="span"/>
+                    </div>
+
+                    <div>
+                        <label htmlFor="quantity">Product quantity:</label>
+                        <Field id="quantity" name="quantity" placeholder="Type..."/>
+                        <ErrorMessage name="quantity" component="span"/>
+                    </div>
+
+                    <div>
+                        <label htmlFor="description">Product quantity:</label>
+                        <Field id="description" name="description" placeholder="Type..." component="textarea"/>
+                        <ErrorMessage name="description" component="span"/>
+                    </div>
 
 
-                    <Field id="language" name="language" component="select">
-                        <option>Lietuvių</option>
-                        <option>English</option>
-                    </Field>
-                    <p></p>
+
+                    {/*<label htmlFor="name"/>*/}
+
+                    {/*<Field id="name" name="name" placeholder="Type..."/>*/}
+                    {/*<ErrorMessage name="name" component="div"/>*/}
 
                     {!props.isSubmitting ? <button type="submit">Submit</button> :
                         <span>Submitting...</span>}
-
                 </Form>
-
-            )
-
-
-        }}
-
+                </>
+        )}
 
     </Formik>
 
-    //     initialValues={{ name: 'jared' }}
-    //     onSubmit={(values, actions) => {
-    //         setTimeout(() => {
-    //             alert(JSON.stringify(values, null, 2));
-    //             actions.setSubmitting(false);
-    //         }, 1000);
-    //     }}
-    // >
-    //     {props => (
-    //         <form onSubmit={props.handleSubmit}>
-    //             <input
-    //                 type="text"
-    //                 onChange={props.handleChange}
-    //                 onBlur={props.handleBlur}
-    //                 value={props.values.name}
-    //                 name="name"
-    //             />
-    //             {props.errors.name && <div id="feedback">{props.errors.name}</div>}
-    //             <button type="submit">Submit</button>
-    //         </form>
-    //     )}
 
 )
 

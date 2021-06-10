@@ -35,7 +35,7 @@ function App() {
         <CssBaseline />
         <Header/>
         <Content/>
-        <LoginForm/>
+        {/*<LoginForm/>*/}
         <Footer/>
     </div>
   );

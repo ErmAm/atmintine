@@ -1,5 +1,6 @@
 import LoginForm from "../UserLogin/LoginForm";
 import TestWithFormkAndYup from "../UserLogin/TestWithFormikAndYup/TestWithFormkAndYup";
+import UserRegistration from "../UserRegistration/UserRegistration";
 
 export default () => (
     <>
@@ -15,5 +16,6 @@ export default () => (
         <p></p>
         <p></p>
         <p></p>
+            <UserRegistration/>
     </>
 )

@@ -1,3 +1,5 @@
 import HTTP from "."
 
-const fetchGpsTags = () => HTTP.get('/')
+const fetchGpsTags = () => HTTP.get('/tags')
+
+export {fetchGpsTags}

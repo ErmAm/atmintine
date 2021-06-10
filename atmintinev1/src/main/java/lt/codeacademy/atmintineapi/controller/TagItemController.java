@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/atmintine/api")
+@RequestMapping("/atmintine/api/tags")
 public class TagItemController {
 
     private TagItemService tagItemService;

@@ -39,8 +39,8 @@ export default () => (
                     {/*<input id="name" onChange={props.handleChange}/>*/}
                     <Field id="name" name="name" placeholder="Type..." component={TextField}/>
                     <ErrorMessage name="name" component="div"/>
-                    
-                    
+
+
                     <Field id="language" name="language" component="select">
                         <option>Lietuvių</option>
                         <option>English</option>

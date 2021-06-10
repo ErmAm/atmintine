@@ -25,6 +25,13 @@ export default () => (
             <Route exact path="/registration">
                 <RegistrationPage/>
             </Route>
+
+            {/* Čia siuntimas per path parametrus */}
+
+            <Route path="/library/:id">
+                <LibraryPage/>
+            </Route>
+
         </Switch>
             {/*<h2>Contentas</h2>*/}
             {/*/!*<LoginForm/>*!/*/}

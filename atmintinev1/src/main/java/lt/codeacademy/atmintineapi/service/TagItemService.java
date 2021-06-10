@@ -23,7 +23,7 @@ public class TagItemService {
 
     public void addTagItem(TagItem tagItem){
         try {
-            if (tagItem == null){
+            if (tagItem != null){
                 tagItemRepository.save(tagItem);
             }
         } catch (IllegalArgumentException e) {

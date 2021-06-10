@@ -1,11 +1,13 @@
+import {useParams} from "react-router-dom";
 
+const LibraryPage = () => {
+    let {id} = useParams();
 
-const LibraryPage = () =>(
-    <>
-        <h1>This is library page</h1>
-
-    </>
-
-)
+    return (<>
+            <h1>This is library page</h1>
+            <h2>ID: {id}</h2>
+        </>
+    )
+}
 
 export default LibraryPage

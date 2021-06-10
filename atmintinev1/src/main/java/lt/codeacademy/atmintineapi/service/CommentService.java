@@ -22,7 +22,7 @@ public class CommentService {
 
     public void addComment(Comment comment){
         try {
-            if (comment == null){
+            if (comment != null){
                 commentRepository.save(comment);
             }
         } catch (IllegalArgumentException e) {

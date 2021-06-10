@@ -32,17 +32,22 @@ public class TagItem {
     @NotBlank
     private String longitude;
 
+    @Column(name="real_place_name")
     private String realPlaceName;
 
     private String description;
     //    Čia privalumai tiesiog vėliavėlės.
 
+    @Column(name="has_shed")
     private Boolean hasShed;
 
+    @Column(name="has_fireplace")
     private Boolean hasFireplace;
 
+    @Column(name="has_wc")
     private Boolean hasWC;
 
+    @Column(name="has_lake_nearby")
     private Boolean hasLakeNearby;
 
 }

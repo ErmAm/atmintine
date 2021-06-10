@@ -38,7 +38,7 @@ export default () => (
             <>
                 <Container maxWidth={"sm"}>
                     <Paper elevation={3}>
-                        <Form style={{margin: 20}}>
+                        <Form style={{margin: 20, padding:10}}>
                             <div>
                                 <FormikInput name="username"
                                              label="Username"
@@ -70,17 +70,23 @@ export default () => (
                                              placeholder="Password"
                                              type="password"/>
                             </div>
-                            <div>
+                            <div >
                                 <FormikInput name="repeatPassword"
                                              label="RepeatPassword"
                                              error={props.touched.repeatPassword && !!props.errors.repeatPassword}
                                              placeholder="repeatPassword"
-                                             type="password"/>
+                                             type="password"
+                                             />
                             </div>
+                            <div style={{padding: 10}}>
                             {!props.isSubmitting ?
-                                <Button variant="contained" color="primary" type="submit">Submit</Button>
+                                <Button variant="contained"
+                                        color="primary"
+                                        type="submit"
+                                        >Submit</Button>
                                 :
                                 <span>Submitting...</span>}
+                            </div>
                         </Form>
                     </Paper>
                 </Container>

@@ -5,6 +5,7 @@ import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import {NavLink} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -28,12 +29,32 @@ export default () => {
             <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                       Home
+                       GPS Atmintinė
                     </Typography>
                     <nav>
+                        <Link to="/"
+                              component={NavLink}
+                              variant="button"
+                              color="textPrimary"
+                              className={classes.link}>
+                            Home
+                        </Link>
+
                         <Link variant="button" color="textPrimary" href="#" className={classes.link}>
                             Mem Library
                         </Link>
+
+                        {/*Čia truputi magija su parametrais nutinka*/}
+                        <Link to="/registration"
+                                    component={NavLink}
+                                    variant="button"
+                                    color="textPrimary"
+                                    className={classes.link}>
+                            Registration
+                        </Link>
+
+
+
                         <Link variant="button" color="textPrimary" href="#" className={classes.link}>
 
                         </Link>

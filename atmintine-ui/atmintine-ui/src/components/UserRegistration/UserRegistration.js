@@ -4,6 +4,10 @@ import {Paper} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import FormikInput from "../UserLogin/FormikInput/FormikInput";
+
+import {createUser} from '../../api/UserAPI'
+
+
 const validationSchema = Yup.object().shape({
     username: Yup.string()
         .min(3)
@@ -33,7 +37,22 @@ export default () => (
         password: '',
         repeatPassword: ''
     }}
-            validationSchema={validationSchema}>
+            validationSchema={validationSchema}
+
+
+        //Submitas logika
+    // TODO čia vyksta submitas formos
+
+    onSubmit={(values,actions) =>{
+        createUser(values)
+            .then(response => response.data)
+            .catch(error =>console.log("Klaidos", error))
+    }}
+
+
+
+
+    >
         {props => (
             <>
                 <Container maxWidth={"sm"}>

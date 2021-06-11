@@ -1,6 +1,6 @@
-import {Form, Formik} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
 import Container from "@material-ui/core/Container";
-import {Paper} from "@material-ui/core";
+import {FormControl, FormHelperText, Input, InputLabel, Paper} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import * as Yup from "yup";
 import FormikInput from "../UserLogin/FormikInput/FormikInput";
@@ -18,11 +18,10 @@ const validationSchema = Yup.object().shape({
         .required(),
     realPlaceName: Yup.string(),
     description: Yup.string(),
-    hasShed: Yup.bool(),
-    hasFireplace: Yup.string(),
-    hasWC: Yup.string(),
-    hasLakeNearby: Yup.string(),
-
+    hasShed: Yup.boolean(),
+    hasFireplace: Yup.boolean(),
+    hasWC: Yup.boolean(),
+    hasLakeNearby: Yup.boolean()
 })
 
 export default () => (
@@ -44,22 +43,23 @@ export default () => (
         //Submitas logika
         // TODO čia vyksta submitas formos
 
-            onSubmit={(values,actions) =>{
+            onSubmit={(values, actions) => {
                 addGpsTag(values)
                     .then(response => response.data)
-                    .catch(error =>console.log("Klaidos", error))
-                    .finally(()=>actions.setSubmitting(false))
+                    .catch(error => console.log("Klaidos", error))
+                    .finally(() => actions.setSubmitting(false))
             }}
 
 
-
-
     >
+
+        {/*TODO reikia sutvarkyti checkboxus*/}
+
         {props => (
             <>
                 <Container maxWidth={"sm"}>
                     <Paper elevation={3}>
-                        <Form style={{margin: 20, padding:10}}>
+                        <Form style={{margin: 20, padding: 10}}>
                             <div>
                                 <FormikInput name="name"
                                              label="Name"
@@ -89,42 +89,62 @@ export default () => (
                                              label="Description"
                                              error={props.touched.password && !!props.errors.password}
                                              placeholder="Description"
-                                             // type="password"
-                                />
-                            </div>
-                            <div >
-                                <FormikInput name="hasShed"
-                                             label="Has Shed"
-                                             error={props.touched.repeatPassword && !!props.errors.repeatPassword}
-                                             placeholder="Has Shed"
-                                             // type="password"
+                                    // type="password"
                                 />
                             </div>
 
-                            <div >
+                            {/*Čia reikia tiesiog savo susigeneruoti formas */}
+                            <div>
+                                <FormControl error={props.touched.repeatPassword && !!props.errors.repeatPassword}
+                                             fullWidth>
+                                    <InputLabel htmlFor="hasShed">"Has Shed"</InputLabel>
+                                    <Field id="hasShed"
+                                           name="hasShed"
+                                           placeholder="Has Shed"
+                                           // type="checkbox"
+                                           {...props} as={Input}
+                                    />
+                                    <ErrorMessage  name="hasShed" component={FormHelperText}/>
+                                </FormControl>
+                            </div>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+
+                            {/*<div>*/}
+                            {/*    <FormikInput name="hasShed"*/}
+                            {/*                 label="Has Shed"*/}
+                            {/*                 error={props.touched.repeatPassword && !!props.errors.repeatPassword}*/}
+                            {/*                 placeholder="Has Shed"*/}
+                            {/*                 type="checkbox"*/}
+                            {/*    />*/}
+                            {/*</div>*/}
+
+                            <div>
                                 <FormikInput name="hasFireplace"
                                              label="Has Fireplace"
                                              error={props.touched.repeatPassword && !!props.errors.repeatPassword}
                                              placeholder="Has Fireplace"
-                                    // type="password"
+                                             // type="checkbox"
                                 />
                             </div>
 
-                            <div >
+                            <div>
                                 <FormikInput name="hasWC"
                                              label="Has WC"
                                              error={props.touched.repeatPassword && !!props.errors.repeatPassword}
                                              placeholder="Has WC"
-                                    // type="password"
+                                             // type="checkbox"
                                 />
                             </div>
 
-                            <div >
+                            <div>
                                 <FormikInput name="hasLakeNearby"
                                              label="Has Lake Nearby"
                                              error={props.touched.repeatPassword && !!props.errors.repeatPassword}
                                              placeholder="Has Lake Nearby"
-                                    // type="password"
+                                             // type="checkbox"
                                 />
                             </div>
                             <div style={{padding: 10}}>

@@ -9,6 +9,9 @@ import {makeStyles} from "@material-ui/core/styles";
 
 import LoginForm from "./components/UserLogin/LoginForm";
 import {BrowserRouter as Router} from "react-router-dom";
+import {useState} from "react";
+
+import React, {createContext} from "react";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,30 +21,45 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const AppDataContext = React.createContext(null)
+
 
 function App() {
     const classes = useStyles()
 
+    //1.1 susikuriam stetio hooksą pasigeneruoti duomenims viso apso
+    const [appDataSet, setAppDataItem] = useState([])
+
+    //1.2 susikuriam steitą visam appsui. Šitas svarbiausias.
+    const appContextState = {
+        appDataSet,
+        addAppDataItem: (appDataItem) => setAppDataItem([...appDataSet, appDataItem]),
+        removeAppDataItem: (id) => setAppDataItem(appDataSet.filter((setAppDataItem) => setAppDataItem.id !== id))
+    }
+
     return (
-        <Router>
-            <div className={classes.root}>
-                {/*<h1>Holla amygos</h1>*/}
-                {/*<TestComponent user={{*/}
-                {/*    name: "Kitoks",*/}
-                {/*    surame: "Pvadinimas"*/}
+        <AppDataContext.Provider value={appContextState}>
+            <Router>
+                <div className={classes.root}>
+                    {/*<h1>Holla amygos</h1>*/}
+                    {/*<TestComponent user={{*/}
+                    {/*    name: "Kitoks",*/}
+                    {/*    surame: "Pvadinimas"*/}
 
-                {/*}} />*/}
+                    {/*}} />*/}
 
-                {/*<BasicTable/>*/}
-                {/*<ActionButtonClicked/>*/}
-                <CssBaseline/>
-                <Header/>
-                <Content/>
-                {/*<LoginForm/>*/}
-                <Footer/>
-            </div>
-        </Router>
+                    {/*<BasicTable/>*/}
+                    {/*<ActionButtonClicked/>*/}
+                    <CssBaseline/>
+                    <Header/>
+                    <Content/>
+                    {/*<LoginForm/>*/}
+                    <Footer/>
+                </div>
+            </Router>
+        </AppDataContext.Provider>
     );
 }
 
-export default App;
+export default App
+export {AppDataContext}

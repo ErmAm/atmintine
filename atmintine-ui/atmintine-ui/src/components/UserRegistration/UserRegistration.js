@@ -47,6 +47,7 @@ export default () => (
         createUser(values)
             .then(response => response.data)
             .catch(error =>console.log("Klaidos", error))
+            .finally(()=>actions.setSubmitting(false))
     }}
 
 

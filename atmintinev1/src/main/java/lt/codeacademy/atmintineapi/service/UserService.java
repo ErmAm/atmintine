@@ -1,5 +1,7 @@
 package lt.codeacademy.atmintineapi.service;
 
+import lt.codeacademy.atmintineapi.exception.TagItemNotFoundException;
+import lt.codeacademy.atmintineapi.exception.UserNotFoundException;
 import lt.codeacademy.atmintineapi.model.TagItem;
 import lt.codeacademy.atmintineapi.model.User;
 import lt.codeacademy.atmintineapi.repository.UserRepository;
@@ -17,13 +19,16 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getAllUsers(){
+//    getAll
+
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public void addNewUser(User user){
+    //    add
+    public void addNewUser(User user) {
         try {
-            if (user != null){
+            if (user != null) {
                 userRepository.save(user);
             }
         } catch (IllegalArgumentException e) {
@@ -31,5 +36,20 @@ public class UserService {
         }
     }
 
+    //    get
+    public User getUser(UUID id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id.toString()));
+    }
+
+    //    update
+    public User update(User User) {
+        return userRepository.save(User);
+    }
+
+    //delete
+    public void delete(UUID id) {
+        userRepository.deleteById(id);
+    }
 
 }

@@ -13,6 +13,6 @@ public class TagItemNotFoundException extends RuntimeException {
         this.tagItemId = tagItemId;
 
 //        TODO multilang reikia padaryti kažkaip visamekame
-        message = String.format("Tokio produkto %s nera", tagItemId);
+        message = String.format("Tokio tag'o %s nera", tagItemId);
     }
 }

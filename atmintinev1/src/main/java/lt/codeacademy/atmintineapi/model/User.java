@@ -36,6 +36,7 @@ public class User {
     private String city;
 
     @ManyToMany
+    @Column(name="roles")
     private Set<Role> roles;
 
     @Column(name="tags")

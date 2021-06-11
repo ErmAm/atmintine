@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -32,4 +34,11 @@ public class User {
     private String phoneNumber;
 
     private String city;
+
+    @ManyToMany
+    private Set<Role> roles;
+
+    @Column(name="tags")
+    @OneToMany
+    private List<TagItem> tagItemList;
 }

@@ -8,6 +8,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -49,5 +50,9 @@ public class TagItem {
 
     @Column(name="has_lake_nearby")
     private Boolean hasLakeNearby;
+
+    @Column(name="comments")
+    @OneToMany
+    private List<Comment> comments;
 
 }

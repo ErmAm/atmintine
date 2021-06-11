@@ -1,17 +1,25 @@
 import {fetchGpsTags} from '../../api/GpsTagAPI'
 import {useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import {Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
+import {
+    Box,
+    CircularProgress,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow
+} from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import table from "table";
-import {render} from "@testing-library/react";
 
 
 // 1.1 susikuriam stiliuko f-ja
-const useStyle = makeStyles( {
-    table:{
-        maxWidth: 650,
-
+// TODO nežinau ar čia reikia šito
+const useStyle = makeStyles({
+    table: {
+        maxWidth: 650
     }
 })
 
@@ -19,30 +27,36 @@ const useStyle = makeStyles( {
 const LibraryFiller = () => {
 
     const [gpsTagList, setGpsTagList] = useState([])
+    const [loading, setLoading] = useState(true)
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchGpsTags()
             .then(({data}) =>
                 setGpsTagList(data))
-            // .catch(error => console.log("error",error))
-        },[]
-    )
+            .finally(() => setLoading(false))
+        // .catch(error => console.log("error",error))
+    }, [])
 
 
     // 1.1 Išsikviečiam stiliuko f-ja.
-    const clasess = useStyle()
+    const classes = useStyle()
 
-    return(
+    return (
         <>
             {/*<h1>I am librarry filler component</h1>*/}
             {/*<pre>*/}
             {/*    {JSON.stringify(gpsTagList, null,2)}*/}
             {/*</pre>*/}
+
+            {/*classes={classes.table}*/}
+
             <Container maxWidth="md">
-                <TableContainer component={Paper} className={table}>
+                <TableContainer component={Paper}>
+
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
+
                                 <TableCell>Location name</TableCell>
                                 <TableCell align="right">Latitude</TableCell>
                                 <TableCell align="right">Longitude</TableCell>
@@ -55,26 +69,32 @@ const LibraryFiller = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {gpsTagList.map(gpsTag => (
-                                <TableRow key={gpsTag.id}>
-                                    <TableCell component="th" scope="row">
-                                        {gpsTag.name}
+                            {loading ?
+                                <TableRow>
+                                    <TableCell colSpan={12} align="center">
+                                        <CircularProgress/>
                                     </TableCell>
-                                    <TableCell align="right">{gpsTag.latitude}</TableCell>
-                                    <TableCell align="right">{gpsTag.longitude}</TableCell>
-                                    <TableCell align="right">{gpsTag.realPlaceName}</TableCell>
-                                    <TableCell align="right">{gpsTag.description}</TableCell>
-                                    <TableCell align="right">{(gpsTag.hasShed ? "True" : "False")}</TableCell>
-                                    <TableCell align="right">{(gpsTag.hasFireplace ? "True" : "False")}</TableCell>
-                                    <TableCell align="right">{(gpsTag.hasLakeNearby ? "True" : "False")}</TableCell>
-                                    <TableCell align="right">{(gpsTag.hasWC ? "True" : "False")}</TableCell>
-                                </TableRow>
-                            ))}
+                                </TableRow> :
+                                gpsTagList.map(gpsTag => (
+                                    <TableRow key={gpsTag.id}>
+                                        <TableCell component="th" scope="row">
+                                            {gpsTag.name}
+                                        </TableCell>
+                                        <TableCell align="right">{gpsTag.latitude}</TableCell>
+                                        <TableCell align="right">{gpsTag.longitude}</TableCell>
+                                        <TableCell align="right">{gpsTag.realPlaceName}</TableCell>
+                                        <TableCell align="right">{gpsTag.description}</TableCell>
+                                        <TableCell align="right">{(gpsTag.hasShed ? "True" : "False")}</TableCell>
+                                        <TableCell align="right">{(gpsTag.hasFireplace ? "True" : "False")}</TableCell>
+                                        <TableCell align="right">{(gpsTag.hasLakeNearby ? "True" : "False")}</TableCell>
+                                        <TableCell align="right">{(gpsTag.hasWC ? "True" : "False")}</TableCell>
+                                    </TableRow>
+                                ))}
                         </TableBody>
                     </Table>
+
                 </TableContainer>
             </Container>
-
 
 
         </>

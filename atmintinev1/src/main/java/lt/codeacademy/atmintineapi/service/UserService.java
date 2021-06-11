@@ -1,5 +1,6 @@
 package lt.codeacademy.atmintineapi.service;
 
+import lt.codeacademy.atmintineapi.model.TagItem;
 import lt.codeacademy.atmintineapi.model.User;
 import lt.codeacademy.atmintineapi.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,16 @@ public class UserService {
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
+
+    public void addNewUser(User user){
+        try {
+            if (user != null){
+                userRepository.save(user);
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

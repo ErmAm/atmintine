@@ -13,6 +13,10 @@ import {
     TableRow
 } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import {connect} from "react-redux";
+import {addToTagItemList} from "../../store/slices/tagItemSlice";
+
 
 
 // 1.1 susikuriam stiliuko f-ja
@@ -23,8 +27,13 @@ const useStyle = makeStyles({
     }
 })
 
+// props = { addToCart: addToCart }
+// tunedAddToCart = (product) => dispatch(addToCart(product))
+// const Products = ({ tunedAddToCart }) => {
 
-const LibraryFiller = () => {
+
+
+const LibraryFiller = ({addToTagItemList}) => {
 
     const [gpsTagList, setGpsTagList] = useState([])
     const [loading, setLoading] = useState(true)
@@ -40,6 +49,12 @@ const LibraryFiller = () => {
 
     // 1.1 Išsikviečiam stiliuko f-ja.
     const classes = useStyle()
+
+
+    const handleOnClick = (tagItem) => {
+        addToTagItemList(tagItem)
+        // addToCart(product)
+    }
 
     return (
         <>
@@ -88,6 +103,8 @@ const LibraryFiller = () => {
                                         <TableCell align="right">{(gpsTag.hasFireplace ? "True" : "False")}</TableCell>
                                         <TableCell align="right">{(gpsTag.hasLakeNearby ? "True" : "False")}</TableCell>
                                         <TableCell align="right">{(gpsTag.hasWC ? "True" : "False")}</TableCell>
+                                        <Button variant="outlined" color="primary"
+                                            onClick={() => handleOnClick(gpsTag)}>Buy</Button>
                                     </TableRow>
                                 ))}
                         </TableBody>
@@ -102,4 +119,20 @@ const LibraryFiller = () => {
 
 }
 
-export default LibraryFiller
+const mapDispatchToProps={
+    // 1.4 taigi norime kažkokios pridėk produktą funkcijos. Tam reikia nurodyti action creatoriaus funkciją
+    addToTagItemList
+}
+
+// 1.3 prikabinam konektoriu ir pasakom kokius propsus ir kokius actionus norime daryti.
+
+// const TagItemsListConnected = connect(null, mapDispatchToProps)(tagItem)
+//
+// export default LibraryFiller
+
+// 1.4 panormalizuotas exportas.
+const storeBindingFn= connect(null, mapDispatchToProps)
+const TagItemsListConnected = storeBindingFn(LibraryFiller)
+
+export default TagItemsListConnected
+// export default connect(null, mapDispatchToProps)(LibraryFiller)

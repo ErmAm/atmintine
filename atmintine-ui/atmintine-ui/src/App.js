@@ -12,6 +12,9 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {useState} from "react";
 
 import React, {createContext} from "react";
+import constructStore from "./store";
+import {Provider} from "react-redux";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,32 +24,31 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const AppDataContext = React.createContext(null)
+// const AppDataContext = React.createContext(null)
+
+
+//2.1 Redux susikuriu store
+const store = constructStore()
 
 
 function App() {
     const classes = useStyles()
 
-    //1.1 susikuriam stetio hooksą pasigeneruoti duomenims viso apso
-    const [appDataSet, setAppDataItem] = useState([])
-
-    //1.2 susikuriam steitą visam appsui. Šitas svarbiausias.
-    const appContextState = {
-        appDataSet,
-        addAppDataItem: (appDataItem) => setAppDataItem([...appDataSet, appDataItem]),
-        removeAppDataItem: (id) => setAppDataItem(appDataSet.filter((setAppDataItem) => setAppDataItem.id !== id))
-    }
+    // //1.1 susikuriam stetio hooksą pasigeneruoti duomenims viso apso
+    // const [appDataSet, setAppDataItem] = useState([])
+    //
+    // //1.2 susikuriam steitą visam appsui. Šitas svarbiausias.
+    // const appContextState = {
+    //     appDataSet,
+    //     addAppDataItem: (appDataItem) => setAppDataItem([...appDataSet, appDataItem]),
+    //     removeAppDataItem: (id) => setAppDataItem(appDataSet.filter((setAppDataItem) => setAppDataItem.id !== id))
+    // }
 
     return (
-        <AppDataContext.Provider value={appContextState}>
+        //2.2 apsigaubiam apsą su reduxu.
+        <Provider store={store}>
             <Router>
                 <div className={classes.root}>
-                    {/*<h1>Holla amygos</h1>*/}
-                    {/*<TestComponent user={{*/}
-                    {/*    name: "Kitoks",*/}
-                    {/*    surame: "Pvadinimas"*/}
-
-                    {/*}} />*/}
 
                     {/*<BasicTable/>*/}
                     {/*<ActionButtonClicked/>*/}
@@ -57,9 +59,9 @@ function App() {
                     <Footer/>
                 </div>
             </Router>
-        </AppDataContext.Provider>
-    );
+        </Provider>
+);
 }
 
 export default App
-export {AppDataContext}
+// export {AppDataContext}

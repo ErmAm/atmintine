@@ -1,5 +1,5 @@
 import tagItem from "./slices/tagItemSlice";
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
+import {combineReducers, compose, createStore} from "redux";
 
 
 

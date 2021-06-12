@@ -2,15 +2,20 @@
 //Konstantos iškėlimas.
 import {createSlice} from "@reduxjs/toolkit";
 import {logger} from "redux-logger/src";
+import {saveToLocalStorage} from "../../utils/localStorage";
+import _ from 'lodash'
 
 //
 // const ADD_TO_LIST = "ADD_TO_LIST"
 // const REMOVE_FROM_LIST = "REMOVE_FROM_LIST"
 
+
+const initialState = []
+
 // 2.1 Redux toolkitas create slice.
 const tagItemSlice = createSlice({
     name: 'tagItems',
-    initialState: [],
+    initialState,
     reducers: {
 
         //    prisidedam funcijas.
@@ -29,6 +34,23 @@ const tagItemSlice = createSlice({
         // }
     }
 })
+
+let prevTagListState = initialState
+
+const subscribeToItemListChanges = (store) => {
+    // store.subscribe(() => console.log("state pasikeite",store.getState()))
+    store.subscribe(_.throttle(() => {
+
+        console.log("Locash suveikė po 1 sec")
+        const currentTagListState = store.getState().tagItemReducer
+
+        if (prevTagListState !== currentTagListState) {
+
+            prevTagListState = currentTagListState
+            saveToLocalStorage('tagList', currentTagListState)
+        }
+    }, 1000))
+}
 
 // //Reduceris
 // const tagItemReducer = (state = [], action) => {
@@ -61,3 +83,4 @@ const tagItemSlice = createSlice({
 
 export default tagItemSlice.reducer
 export const {addToTagItemList, removeFromItemList} = tagItemSlice.actions // čia yra action creatoriai.
+export {subscribeToItemListChanges}

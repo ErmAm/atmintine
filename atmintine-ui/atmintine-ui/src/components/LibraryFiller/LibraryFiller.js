@@ -23,7 +23,7 @@ import {addToTagItemList} from "../../store/slices/tagItemSlice";
 // TODO nežinau ar čia reikia šito
 const useStyle = makeStyles({
     table: {
-        maxWidth: 650
+        maxWidth: 900
     }
 })
 
@@ -65,7 +65,8 @@ const LibraryFiller = ({addToTagItemList}) => {
 
             {/*classes={classes.table}*/}
 
-            <Container maxWidth="md">
+            {/*<Container maxWidth="xd">*/}
+            <Container>
                 <TableContainer component={Paper}>
 
                     <Table aria-label="simple table">

@@ -2,7 +2,7 @@
 //Konstantos iškėlimas.
 import {createSlice} from "@reduxjs/toolkit";
 import {logger} from "redux-logger/src";
-import {saveToLocalStorage} from "../../utils/localStorage";
+import {loadFromLocalStorage, saveToLocalStorage} from "../../utils/localStorage";
 import _ from 'lodash'
 
 //
@@ -52,6 +52,11 @@ const subscribeToItemListChanges = (store) => {
     }, 1000))
 }
 
+const loadItemListFromLocalStorage = () => loadFromLocalStorage('tagList') || undefined
+
+    // loadFromLocalStorage('tagList') ? undefined: loadFromLocalStorage('tagList')
+
+
 // //Reduceris
 // const tagItemReducer = (state = [], action) => {
 //
@@ -83,4 +88,4 @@ const subscribeToItemListChanges = (store) => {
 
 export default tagItemSlice.reducer
 export const {addToTagItemList, removeFromItemList} = tagItemSlice.actions // čia yra action creatoriai.
-export {subscribeToItemListChanges}
+export {subscribeToItemListChanges,loadItemListFromLocalStorage}

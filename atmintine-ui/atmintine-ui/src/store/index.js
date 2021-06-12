@@ -1,4 +1,4 @@
-import tagItemReducer, {subscribeToItemListChanges} from "./slices/tagItemSlice";
+import tagItemReducer, {loadItemListFromLocalStorage, subscribeToItemListChanges} from "./slices/tagItemSlice";
 import {combineReducers, compose, createStore} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
 import {logger} from "redux-logger/src";
@@ -18,7 +18,10 @@ const constructStore = () => {
         reducer: {
             tagItemReducer
         },
-        middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger)
+        middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
+        preloadedState:{
+            tagItemReducer: loadItemListFromLocalStorage()
+        }
     })
 
     subscribeToItemListChanges(store)

@@ -33,7 +33,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             UsernamePasswordAuthenticationToken authRequest =
                     new UsernamePasswordAuthenticationToken(loginDto.getUsername(),loginDto.getPassword());
 
-            return getAuthenticationManager().authenticate(authRequest);
+
+            return getAuthenticationManager()
+                    .authenticate(authRequest);
         } catch (IOException e) {
             throw new BadCredentialsException("Unable to parse credentials");
         }

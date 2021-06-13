@@ -32,6 +32,10 @@ public class UserService implements UserDetailsService {
 
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
+//        System.out.println(userRepository.findByUsername(username).toString());
+        UUID uuid = UUID.fromString("00000000-0000-000a-000f-000000000001");
+
+        userRepository.findById(uuid);
         return userRepository.findWithRolesByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found."));
     }

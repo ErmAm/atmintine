@@ -26,8 +26,10 @@ public class User implements UserDetails {
     @Type(type = "uuid-char")
     private UUID id;
 
+    @Column(name="username")
     private String username;
 
+    @Column(name="password")
     private String password;
 
     private String name;

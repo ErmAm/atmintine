@@ -1,8 +1,8 @@
 
 INSERT INTO user(id, username, password, name, surname, email, phone_number, city)
 VALUES
-('00000000-0000-000a-000f-000000000001','admin','$2y$10$UQnqr7hOZPuqQixtLcuijODPvPdnp4D3LUYWulOrr4C7yLKy19TMe', 'Jonas', 'Jonaitis', 'skubu@go.org','+37068000003','Vilnius'),
-('00000000-0000-000a-000f-000000000002', 'user','$2y$12$Asaa8kGQMLq5IQ2LNb2VEeF6zKX4larg/rvALtrzLlJhczyl6teWC','Šaltenis', 'Pavardenis', 'popa@go.org','+37068000002','Kaunas'),
+('00000000-0000-000a-000f-000000000001','admin','{bcrypt}$2y$12$rY4yn5Nc0dL9vFX7zjDh5.23HjOmf5iwlrmQdMm0WRh0RM.9XBevK' , 'Jonas', 'Jonaitis', 'skubu@go.org','+37068000003','Vilnius'),
+('00000000-0000-000a-000f-000000000002', 'user','{bcrypt}$2y$12$Asaa8kGQMLq5IQ2LNb2VEeF6zKX4larg/rvALtrzLlJhczyl6teWC','Šaltenis', 'Pavardenis', 'popa@go.org','+37068000002','Kaunas'),
 ('00000000-0000-000a-000f-000000000003', 'open','{bcrypt}$2y$12$Asaa8kGQMLq5IQ2LNb2VEeF6zKX4larg/rvALtrzLlJhczyl6teWC','Skiepas', 'Gudžiauskas', 'mama@mya.io','+37068000047','Klaipėda'),
 ('00000000-0000-000a-000f-000000000004', 'pleb1','{bcrypt}$2y$12$Asaa8kGQMLq5IQ2LNb2VEeF6zKX4larg/rvALtrzLlJhczyl6teWC','James', 'Doe', 'very@go.org','+37068000001','Užventė')
 ;

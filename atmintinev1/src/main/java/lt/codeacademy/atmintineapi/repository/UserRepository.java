@@ -10,8 +10,10 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
 
-    User findByUsername(String username);
+    Optional<User> findByUsername(String username);
 
+
+//@Query("SELECT u FROM User u JOIN FETCH u.roles WHERE u.username = :username")
     @Query("SELECT u FROM User u JOIN FETCH u.roles WHERE u.username = :username")
     Optional<User> findWithRolesByUsername(@Param("username") String username);
 }

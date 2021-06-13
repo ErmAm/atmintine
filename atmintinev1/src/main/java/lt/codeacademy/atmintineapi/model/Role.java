@@ -5,11 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Getter
@@ -17,14 +15,19 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role implements GrantedAuthority {
 
     @Id
-//    @GeneratedValue
+    @GeneratedValue
     @Column(columnDefinition = "VARCHAR(36)", updatable = false)
     @Type(type = "uuid-char")
     private UUID id;
 
     private String name;
+
+    @Override
+    public String getAuthority() {
+        return "ROLE_" + name;
+    }
 
 }

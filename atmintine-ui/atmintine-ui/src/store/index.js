@@ -2,6 +2,7 @@ import tagItemReducer, {loadItemListFromLocalStorage, subscribeToItemListChanges
 import {combineReducers, compose, createStore} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
 import {logger} from "redux-logger/src";
+import user from './slices/userSlice'
 
 
 
@@ -16,7 +17,8 @@ const constructStore = () => {
 
     const store = configureStore({
         reducer: {
-            tagItemReducer
+            tagItemReducer,
+            user
         },
         middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
         preloadedState:{

@@ -48,9 +48,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-                                            FilterChain chain, Authentication authResult) {
+                                            FilterChain chain, Authentication authResult) throws ServletException, IOException {
 
+        SecurityContextHolder.getContext().setAuthentication(authResult);
         response.addHeader("Authorization", jwtService.createToken((User) authResult.getPrincipal()));
+        chain.doFilter(request,response);
+
     }
 
 

@@ -27,7 +27,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         String authorizationHeader = request.getHeader("Authorization");
 
-        if (isEmpty(authorizationHeader) && !authorizationHeader.startsWith("Bearer ")) {
+        if (isEmpty(authorizationHeader) || !authorizationHeader.startsWith("Bearer ")) {
             chain.doFilter(request, response);
             return;
         }

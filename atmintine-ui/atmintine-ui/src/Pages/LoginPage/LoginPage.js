@@ -6,14 +6,31 @@ import {Form, Formik} from "formik"
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import FormikInput from "../../components/UserLogin/FormikInput/FormikInput";
+import {useDispatch} from "react-redux";
+
+import {login as setLogin} from '../../store/slices/userSlice'
 
 const LoginPage = () => {
+
+    //Dispačerio reikia
+    const dispatch = useDispatch()
+
+
+
     const postLogin = (loginData, {setSubmitting}) => {
         setSubmitting(true)
 
         login(loginData)
-            .then(({headers: {authorization}}) => {
-                console.log("JWT", authorization)
+            .then(({data: loggedInUser, headers: {authorization}}) => {
+                // console.log("JWT", authorization)
+                // console.log("JWT users: ", loggedInUser)
+                // console.log("JWT autorizacijos headeris: ", authorization)
+                dispatch(
+                    setLogin({
+                        loggedInUser,
+                        jwt:authorization}))
+
+
             })
             .finally(() => setSubmitting(false))
     }

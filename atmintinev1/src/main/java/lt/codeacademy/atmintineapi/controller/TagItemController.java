@@ -5,6 +5,7 @@ import lt.codeacademy.atmintineapi.model.TagItem;
 import lt.codeacademy.atmintineapi.service.TagItemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/atmintine/api/tags")
+@RequestMapping("/tags")
 public class TagItemController {
 
     private TagItemService tagItemService;
@@ -23,6 +24,7 @@ public class TagItemController {
 
     //    Šitas susirenka viską viską
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
     public List<TagItem> getTagItems() {
         return tagItemService.getTagItems();
     }

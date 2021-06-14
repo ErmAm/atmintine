@@ -2,7 +2,7 @@ import LoginForm from "../UserLogin/LoginForm";
 import TestWithFormkAndYup from "../UserLogin/TestWithFormikAndYup/TestWithFormkAndYup";
 import UserRegistration from "../UserRegistration/UserRegistration";
 import {Switch, Route} from "react-router-dom"
-import LandingPage from "../../Pages/LoginPage/LandingPage";
+import LoginPage from "../../Pages/LoginPage/LoginPage";
 import RegistrationPage from "../../Pages/RegisterPage/RegistrationPage";
 import LibraryPage from "../../Pages/LibraryPage/LibraryPage";
 import ProfilePage from "../../Pages/ProfilePage/ProfilePage";
@@ -13,7 +13,7 @@ export default () => (
 
         <Switch>
             <Route exact path="/">
-                <LandingPage/>
+                <LoginPage/>
             </Route>
             <Route exact path="/library">
                 <LibraryPage/>
@@ -29,6 +29,10 @@ export default () => (
 
             <Route path="/library/:id">
                 <LibraryPage/>
+            </Route>
+
+            <Route path="/login">
+                <LoginPage/>
             </Route>
 
         </Switch>

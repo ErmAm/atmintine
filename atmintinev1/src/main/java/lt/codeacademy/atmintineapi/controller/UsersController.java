@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/atmintine/api/users")
+@RequestMapping("/users")
 public class UsersController {
 
     private final UserService userService;

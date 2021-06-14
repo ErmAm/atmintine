@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/atmintine/api/comments")
+@RequestMapping("/comments")
 @Api(tags="This is Comment controller")
 public class CommentController {
 

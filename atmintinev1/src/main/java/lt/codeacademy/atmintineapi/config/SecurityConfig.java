@@ -2,11 +2,15 @@ package lt.codeacademy.atmintineapi.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lt.codeacademy.atmintineapi.security.JwtAuthenticationFilter;
-import lt.codeacademy.atmintineapi.service.UserService;
+import lt.codeacademy.atmintineapi.security.JwtAuthorizationFilter;
+import lt.codeacademy.atmintineapi.security.JwtService;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -16,55 +20,52 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final ObjectMapper objectMapper;
-    private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
+    private final UserDetailsService userService;
+    private final JwtService jwtService;
 
-    public SecurityConfig(ObjectMapper objectMapper, UserService userService, PasswordEncoder passwordEncoder) {
+    public SecurityConfig(ObjectMapper objectMapper, UserDetailsService userService, JwtService jwtService) {
         this.objectMapper = objectMapper;
         this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .csrf().disable()
                 .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
                 .authorizeRequests()
-                    .antMatchers(HttpMethod.POST,"/login").permitAll()
+                .antMatchers("/login").permitAll()
                     .anyRequest().authenticated()
-                    .and()
+                .and()
                 .exceptionHandling()
-                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-                        .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(),
-                        objectMapper))
-        ;
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                .and()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), objectMapper, jwtService))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtService));
 
     }
 
-//    @Bean
-//    @Override
-//    protected AuthenticationManager authenticationManager() throws Exception {
-//        return super.authenticationManager();
-//    }
-
-//    Prisidedam autentifikacijos builderį
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        PasswordEncoder encoder1 = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
         auth
                 .userDetailsService(userService)
-                .passwordEncoder(encoder1);
+                .passwordEncoder(encoder());
     }
 
+    @Bean
+    public PasswordEncoder encoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
 
 //    Prisidedam enkoderį
 //    @Bean

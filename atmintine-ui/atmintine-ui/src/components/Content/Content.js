@@ -8,7 +8,7 @@ import LibraryPage from "../../Pages/LibraryPage/LibraryPage";
 import ProfilePage from "../../Pages/ProfilePage/ProfilePage";
 import Users from "../../Pages/Users/Users";
 import SecuredRoute from "../SecuredRoute/SecuredRoute";
-
+import TagItemServicePage from "../../Pages/TagItemServicePage/TagItemServicePage";
 
 export default () => (
     <>
@@ -36,6 +36,10 @@ export default () => (
 
             <Route path="/login">
                 <LoginPage/>
+            </Route>
+
+            <Route exact path="/tagItemService/:id">
+                <TagItemServicePage/>
             </Route>
 
             <SecuredRoute path="/users" roles={["ADMIN"]}>

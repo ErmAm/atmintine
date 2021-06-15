@@ -1,5 +1,5 @@
 import {fetchGpsTags} from '../../api/GpsTagAPI'
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {
     Box,
@@ -17,6 +17,9 @@ import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
 import {addToTagItemList} from "../../store/slices/tagItemSlice";
 import {useTranslation} from "react-i18next";
+
+import {deleteGpsTag} from '../../api/GpsTagAPI'
+import {Link as RouterLink} from "react-router-dom";
 
 
 
@@ -57,8 +60,26 @@ const LibraryFiller = ({addToTagItemList}) => {
 
     const handleOnClick = (tagItem) => {
         addToTagItemList(tagItem)
-        // addToCart(product)
+
     }
+
+
+
+    const deleteGPSTAG = (tagItem) => {
+        deleteGpsTag(tagItem.id)
+            .finally(
+                setGpsTagList(gpsTagList.filter(localTag => localTag.id !== tagItem.id))
+            )
+    }
+
+    const updateGpsTag = (tagItem) => {
+        updateGpsTag(tagItem.id)
+            .finally(
+                setGpsTagList(gpsTagList.filter(localTag => localTag.id !== tagItem.id))
+            )
+    }
+
+
 
     return (
         <>
@@ -110,8 +131,17 @@ const LibraryFiller = ({addToTagItemList}) => {
                                         <TableCell align="right">{(gpsTag.hasFireplace ? "True" : "False")}</TableCell>
                                         <TableCell align="right">{(gpsTag.hasLakeNearby ? "True" : "False")}</TableCell>
                                         <TableCell align="right">{(gpsTag.hasWC ? "True" : "False")}</TableCell>
-                                        <Button variant="outlined" color="primary"
-                                            onClick={() => handleOnClick(gpsTag)}>Buy</Button>
+                                        {/*<Button variant="outlined" color="primary"*/}
+                                        {/*    onClick={() => handleOnClick(gpsTag)}>Add to Redux</Button>*/}
+
+                                        {/*<Button variant="outlined" color="primary"*/}
+                                        {/*        onClick={() => deleteGPSTAG(gpsTag)}>Delete</Button>*/}
+
+                                        <Button color="primary" to={"/tagItemService/" + gpsTag.id}
+                                                variant="contained"
+                                                component={RouterLink}
+                                                onClick={() => (gpsTag)}>Details</Button>
+
                                     </TableRow>
                                 ))}
                         </TableBody>

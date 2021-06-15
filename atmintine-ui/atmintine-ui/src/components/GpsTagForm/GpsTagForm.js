@@ -8,6 +8,34 @@ import FormikInput from "../UserLogin/FormikInput/FormikInput";
 import {addGpsTag} from '../../api/GpsTagAPI'
 
 
+const takeInFromProps = ({id}) => {
+    console.log(id)
+
+
+}
+
+
+// const ChangeUserPage = () => {
+//     const {t} = useTranslation('register');
+//     const {id} = useParams();
+//     const history = useHistory();
+//
+//     const [loading, setLoading] = useState(true);
+//     const [user, setUser] = useState();
+//     const location = useLocation();
+//
+//
+//     useEffect(() => {
+//         getUserById(id)
+//             .then(({data}) => {
+//                 setUser(data)
+//             })
+//             .finally(() => setLoading(false))
+//     }, []);
+
+
+
+
 const validationSchema = Yup.object().shape({
     name: Yup.string()
         .min(3)
@@ -24,7 +52,14 @@ const validationSchema = Yup.object().shape({
     hasLakeNearby: Yup.boolean()
 })
 
+
+
+
+
+
 export default () => (
+
+
     <Formik initialValues={{
         name: '',
         latitude: '',

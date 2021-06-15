@@ -66,8 +66,8 @@ public class JwtService {
 
 //        Turime roles ir username kruie yra stringai.
 //        Vadinasi truputi reikia perdaryti principalą.
-//         Pagal username galime pvz kviesti db.
-        // šiam momentui nieko nebereikia.
+//        Pagal username galime pvz kviesti db.
+//        šiam momentui nieko nebereikia.
 //        Dabar backe nereikia nieko.
 
 

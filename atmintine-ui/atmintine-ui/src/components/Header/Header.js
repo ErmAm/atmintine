@@ -11,6 +11,8 @@ import {useSelector} from "react-redux";
 import {Link as RouterLink} from "react-router-dom";
 import LanguageSwitcher from "../translation/LanguageSwitcher";
 
+import {logout as userLogaut} from "../../store/slices/userSlice"
+
 const useStyles = makeStyles((theme) => ({
     appBar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
@@ -30,12 +32,23 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
+
+
+
 export default () => {
     const classes = useStyles()
 
 
+
     // const userFullName = useSelector(state => state.user.loggedInUser?.fullName)
     const loggedInUser  = useSelector(state => state.user.loggedInUser)
+
+    // Dispatchą susitvarkyt
+    //
+    // const logoutas =()=>{
+    //     userLogaut
+    // }
+
 
     return (
         <>
@@ -63,15 +76,17 @@ export default () => {
                             Library
                         </Link>
 
-                        <Link to="/profile"
-                              component={NavLink}
-                              activeClassName={classes.active}
-                              variant="button"
-                              color="textPrimary"
-                              className={classes.link}>
-                            Account
-                        </Link>
-
+                        {
+                            loggedInUser?.roles.includes("ADMIN","USER") ?
+                            <Link to="/profile"
+                                  component={NavLink}
+                                  activeClassName={classes.active}
+                                  variant="button"
+                                  color="textPrimary"
+                                  className={classes.link}>
+                                Account
+                            </Link>: ""
+                        }
                         {/*Čia tiesiog apasuagotas linkas*/}
                         {
                             loggedInUser?.roles.includes("ADMIN") ?
@@ -126,7 +141,9 @@ export default () => {
                                     Sveiki, {loggedInUser.fullName}
                                 </Typography>
 
-                                <Button color="secondary" variant="contained" className={classes.link}>
+                                <Button color="secondary" onClick={() => {
+                                    window.location.href = "/"
+                                }} variant="contained" className={classes.link}>
                                     Logout
                                 </Button>
                             </>

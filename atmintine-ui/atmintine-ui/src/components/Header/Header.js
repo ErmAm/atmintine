@@ -1,11 +1,14 @@
 import AppBar from "@material-ui/core/AppBar";
-import {Toolbar} from "@material-ui/core";
+import {Box, Toolbar} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {NavLink} from "react-router-dom"
+import {useSelector} from "react-redux";
+
+import {Link as RouterLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -28,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
     const classes = useStyles()
+
+
+    const userFullName = useSelector(state => state.user.loggedInUser?.fullName)
+
     return (
         <>
             <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
@@ -80,9 +87,39 @@ export default () => {
 
                         </Link>
                     </nav>
-                    <Button href="/login" color="primary" variant="outlined" className={classes.link}>
-                        Login
-                    </Button>
+                    {/*<Button href="/login" color="primary" variant="outlined" className={classes.link}>*/}
+                    {/*    Login*/}
+                    {/*</Button>*/}
+
+                    <Box mx={4}>
+                        {
+                            userFullName ?
+                            <>
+                                <Typography variant="h6" component="span">
+                                    Hello, {userFullName}
+                                </Typography>
+
+                                <Button color="secondary" variant="contained" className={classes.link}>
+                                    Logout
+                                </Button>
+                            </>
+                            :
+                            <>
+                                <Button color="primary" to="/login" variant="contained" component={RouterLink}>
+                                    Login
+                                </Button>
+
+                                {/* TODO Šitą  reikia sutvarkyti kad selektorius veiktų.*/}
+
+                                <Button href="#" color="secondary" variant="contained" className={classes.link}>
+                                    {/*{t('signIn')}*/}
+                                </Button>
+                            </>
+                        }
+                    </Box>
+
+
+
                 </Toolbar>
             </AppBar>
         </>

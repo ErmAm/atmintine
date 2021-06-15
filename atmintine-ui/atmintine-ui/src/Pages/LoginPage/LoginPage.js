@@ -7,14 +7,16 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import FormikInput from "../../components/UserLogin/FormikInput/FormikInput";
 import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 import {login as setLogin} from '../../store/slices/userSlice'
+
 
 const LoginPage = () => {
 
     //Dispačerio reikia
     const dispatch = useDispatch()
-
+    const history = useHistory()
 
 
     const postLogin = (loginData, {setSubmitting}) => {
@@ -30,6 +32,8 @@ const LoginPage = () => {
                         loggedInUser,
                         jwt:authorization}))
 
+            //  1.1  po sėkmingo loginor eikia iškviesti redirecto funckiją.
+            history.push('/')
 
             })
             .finally(() => setSubmitting(false))

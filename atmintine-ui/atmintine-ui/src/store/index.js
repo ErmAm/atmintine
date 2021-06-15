@@ -30,15 +30,8 @@ const constructStore = () => {
 
     return store
 
-    // //debugo įjungimas
-    // const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
-    //
-    // return createStore(
-    //     rootReducer,
-    //     undefined,
-    //     composeEnhancer())
 }
 
+const store = constructStore()
 
-
-export default constructStore
+export default store

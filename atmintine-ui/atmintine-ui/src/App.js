@@ -8,7 +8,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {useState} from "react";
 
 import React, {createContext} from "react";
-import constructStore from "./store";
+import store from "./store";
 import {Provider} from "react-redux";
 
 
@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-//2.1 Redux susikuriu store
-const store = constructStore()
+// //2.1 Redux susikuriu store
+// const store = constructStore()
 
 
 function App() {

@@ -9,6 +9,7 @@ import {NavLink} from "react-router-dom"
 import {useSelector} from "react-redux";
 
 import {Link as RouterLink} from "react-router-dom";
+import LanguageSwitcher from "../translation/LanguageSwitcher";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -144,7 +145,7 @@ export default () => {
                         }
                     </Box>
 
-
+                    <LanguageSwitcher/>
 
                 </Toolbar>
             </AppBar>

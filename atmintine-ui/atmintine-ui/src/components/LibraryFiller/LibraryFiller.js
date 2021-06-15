@@ -16,6 +16,7 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
 import {addToTagItemList} from "../../store/slices/tagItemSlice";
+import {useTranslation} from "react-i18next";
 
 
 
@@ -50,6 +51,9 @@ const LibraryFiller = ({addToTagItemList}) => {
     // 1.1 Išsikviečiam stiliuko f-ja.
     const classes = useStyle()
 
+    //Tranlatorius
+    const { t } = useTranslation('tagItems');
+
 
     const handleOnClick = (tagItem) => {
         addToTagItemList(tagItem)
@@ -73,15 +77,17 @@ const LibraryFiller = ({addToTagItemList}) => {
                         <TableHead>
                             <TableRow>
 
-                                <TableCell>Location name</TableCell>
-                                <TableCell align="right">Latitude</TableCell>
-                                <TableCell align="right">Longitude</TableCell>
-                                <TableCell align="right">RealPlaceName</TableCell>
-                                <TableCell align="right">Description</TableCell>
-                                <TableCell align="right">Has Shed</TableCell>
-                                <TableCell align="right">Has Fireplace</TableCell>
-                                <TableCell align="right">Has Lake Nearby</TableCell>
-                                <TableCell align="right">Has WC</TableCell>
+                                {/*<TableCell>Location name</TableCell>*/}
+                                <TableCell align="right">{t('PersonalName')}</TableCell>
+                                <TableCell align="right">{t('Latitude')}</TableCell>
+                                <TableCell align="right">{t('Longitude')}</TableCell>
+                                <TableCell align="right">{t('RealPlaceName')}</TableCell>
+                                <TableCell align="right">{t('Description')}</TableCell>
+                                <TableCell align="right">{t('HasShed')}</TableCell>
+                                <TableCell align="right">{t('HasFireplace')}</TableCell>
+                                <TableCell align="right">{t('HasLakeNearby')}</TableCell>
+                                <TableCell align="right">{t('HasWC')}</TableCell>
+
                             </TableRow>
                         </TableHead>
                         <TableBody>

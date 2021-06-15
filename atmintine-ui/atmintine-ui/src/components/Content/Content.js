@@ -7,6 +7,7 @@ import RegistrationPage from "../../Pages/RegisterPage/RegistrationPage";
 import LibraryPage from "../../Pages/LibraryPage/LibraryPage";
 import ProfilePage from "../../Pages/ProfilePage/ProfilePage";
 import Users from "../../Pages/Users/Users";
+import SecuredRoute from "../SecuredRoute/SecuredRoute";
 
 
 export default () => (
@@ -23,10 +24,6 @@ export default () => (
                 <ProfilePage/>
             </Route>
 
-            <Route exact path="/users">
-                <Users/>
-            </Route>
-
             <Route exact path="/registration">
                 <RegistrationPage/>
             </Route>
@@ -40,6 +37,11 @@ export default () => (
             <Route path="/login">
                 <LoginPage/>
             </Route>
+
+            <SecuredRoute path="/users" roles={["ADMIN"]}>
+                <Users/>
+            </SecuredRoute>
+
 
         </Switch>
             {/*<h2>Contentas</h2>*/}

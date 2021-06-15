@@ -1,0 +1,62 @@
+{
+  "header": {
+    "cart": "Cart",
+    "products": "Products",
+    "users": "Users",
+    "signIn": "SignIn",
+    "signUp": "SignUp"
+  },
+  "register": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirm": "Password Confirmation",
+    "register": "Register",
+    "submitting": "Submitting"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "submitting": "Submitting"
+  },
+  "product": {
+    "Product title": "Products",
+    "Price": "Price",
+    "Description": "Description",
+    "Category": "Category",
+    "TV": "TV",
+    "Phones": "Phones",
+    "Pumps": "Pumps",
+    "Create product": "Create product"
+  },
+  "products": {
+    "Product Name": "Product Name",
+    "Quantity": "Quantity",
+    "Price (Eur)": "Price (Eur)",
+    "Description": "Description",
+    "Actions": "Actions"
+  },
+  "footer": {
+    "Eshop Footer": "Eshop Footer English"
+  },
+  "landing": {
+    "key": "Welcome to react",
+    "keyWithParam": "Welcome to React {{name}} {{lastname}}"
+  },
+
+  "tagItems": {
+    "PersonalName": "Personal name",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude",
+    "RealPlaceName": "Real Place Name",
+    "Description": "Description",
+    "HasShed": "Has Shed",
+    "HasFireplace": "Has Fireplace",
+    "HasLakeNearby": "Has Lake Nearby",
+    "HasWC": "Has WC"
+
+  }
+}
+

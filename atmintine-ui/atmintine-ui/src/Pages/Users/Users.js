@@ -1,4 +1,23 @@
+import {Trans, useTranslation, withTranslation} from "react-i18next";
+import {Translation} from "react-i18next";
+import i18n from "i18next";
 
-const Users = () => <h1>Users page! should be secured!</h1>
+
+const Users = () => {
+
+    const {t} = useTranslation('');
+    return (
+        <>
+
+
+                        <h1>Hello!</h1>
+
+
+
+
+        </>
+    )
+
+};
 
 export default Users

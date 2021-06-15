@@ -33,7 +33,8 @@ export default () => {
     const classes = useStyles()
 
 
-    const userFullName = useSelector(state => state.user.loggedInUser?.fullName)
+    // const userFullName = useSelector(state => state.user.loggedInUser?.fullName)
+    const loggedInUser  = useSelector(state => state.user.loggedInUser)
 
     return (
         <>
@@ -70,6 +71,31 @@ export default () => {
                             Account
                         </Link>
 
+                        {/*Čia tiesiog apasuagotas linkas*/}
+                        {
+                            loggedInUser?.roles.includes("ADMIN") ?
+                                <Link variant="button"
+                                      color="textPrimary"
+                                      to="/users"
+                                      className={classes.link}
+                                      activeClassName={classes.active}
+                                      component={NavLink}>
+                                    {/*{t('users')}*/}
+                                    Users
+                                </Link> : ""
+                        }
+
+                        {/*{*/}
+                        {/*loggedInUser.roles.includes('ADMIN')?*/}
+                        {/*<Link to="/users"*/}
+                        {/*      component={NavLink}*/}
+                        {/*      activeClassName={classes.active}*/}
+                        {/*      variant="button"*/}
+                        {/*      color="textPrimary"*/}
+                        {/*      className={classes.link}>*/}
+                        {/*    Users*/}
+                        {/*</Link> : ""*/}
+                        {/*}*/}
 
                         {/*Čia truputi magija su parametrais nutinka*/}
                         <Link to="/registration"
@@ -92,11 +118,11 @@ export default () => {
                     {/*</Button>*/}
 
                     <Box mx={4}>
-                        {
-                            userFullName ?
+                        {loggedInUser?.fullName ?
+
                             <>
                                 <Typography variant="h6" component="span">
-                                    Hello, {userFullName}
+                                    Sveiki, {loggedInUser.fullName}
                                 </Typography>
 
                                 <Button color="secondary" variant="contained" className={classes.link}>

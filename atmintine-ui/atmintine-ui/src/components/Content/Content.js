@@ -6,6 +6,7 @@ import LoginPage from "../../Pages/LoginPage/LoginPage";
 import RegistrationPage from "../../Pages/RegisterPage/RegistrationPage";
 import LibraryPage from "../../Pages/LibraryPage/LibraryPage";
 import ProfilePage from "../../Pages/ProfilePage/ProfilePage";
+import Users from "../../Pages/Users/Users";
 
 
 export default () => (
@@ -21,6 +22,11 @@ export default () => (
             <Route exact path="/profile">
                 <ProfilePage/>
             </Route>
+
+            <Route exact path="/users">
+                <Users/>
+            </Route>
+
             <Route exact path="/registration">
                 <RegistrationPage/>
             </Route>

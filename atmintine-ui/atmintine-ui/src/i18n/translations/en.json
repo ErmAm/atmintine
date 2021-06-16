@@ -68,6 +68,14 @@
     "password": "Password",
     "login": "Login",
     "submitting": "Submitting"
+  },
+  "globalsPage": {
+    "gNewComment": "Create",
+    "gSubmit": "Submitting...",
+    "gWelcome": "Wlcome To GPS Logger",
+    "gUsername": "Username",
+    "Password": "Password",
+    "gSubmit": "Submit"
   }
 }
 

@@ -10,12 +10,15 @@ import {useDispatch} from "react-redux";
 import {useHistory,useLocation} from "react-router-dom";
 
 import {login as setLogin} from '../../store/slices/userSlice'
+import {useTranslation} from "react-i18next";
 
 const LoginPage = () => {
 
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
+
+    const {t} = useTranslation('globalsPage');
 
 
     const postLogin = (loginData, {setSubmitting}) => {
@@ -49,11 +52,11 @@ const LoginPage = () => {
                         <Form>
                             <div>
                                 <FormikInput name="username"
-                                             label="Username"/>
+                                             label={t('gUsername')}/>
                             </div>
                             <div>
                                 <FormikInput name="password"
-                                             label="Password"
+                                             label={t('Password')}
                                              type="password"/>
                             </div>
 
@@ -61,7 +64,7 @@ const LoginPage = () => {
                                     fullWidth
                                     color="primary"
                                     type="submit"
-                                    disabled={props.isSubmitting}>Submit</Button>
+                                    disabled={props.isSubmitting}>{t('gSubmit')}</Button>
                         </Form>
                     </Container>
                 </>

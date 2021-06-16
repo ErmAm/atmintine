@@ -6,13 +6,6 @@ import user from './slices/userSlice'
 
 
 
-// root reduceris yra funckija guanama iškvietus kitą f-ją.
-// const rootReducer = combineReducers({
-//     // tagItemList: tagItemReducer
-//     tagItemsListed
-//
-// })
-
 const constructStore = () => {
 
     const store = configureStore({

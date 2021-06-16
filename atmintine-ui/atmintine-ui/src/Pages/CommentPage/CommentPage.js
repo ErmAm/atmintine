@@ -12,7 +12,7 @@ import {useSelector} from "react-redux";
 
 const CommentPage = () => {
 
-    const {t} = useTranslation('');
+    const {t} = useTranslation('globalsPage');
     const {id} = useParams();
     const history = useHistory();
 
@@ -75,8 +75,9 @@ const CommentPage = () => {
                                         <Grid align="center" container justify="center" alignItems="center">
                                             <Grid item>
                                                 {!props.isSubmitting ?
-                                                    <Button color="primary" variant="contained" type="submit">Create</Button> :
-                                                    <span>Submitting...</span>}
+                                                    <Button color="primary" variant="contained" type="submit">{t('gNewComment')}
+                                                    </Button> :
+                                                    <span>{t('gSubmit')}</span>}
 
                                             </Grid>
 

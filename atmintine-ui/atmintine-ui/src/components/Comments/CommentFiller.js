@@ -94,7 +94,7 @@ const CommentFiller = () => {
                                     variant="contained"
                                     to={"/updateCommentService/" + comment.id}
                                     onClick={() => updateCommentHandler(comment.id)}
-                            >{t('NewComment')}</Button>
+                            >{t('UpdateComment')}</Button>
 
                             <Button color="primary"
                                     variant="contained"

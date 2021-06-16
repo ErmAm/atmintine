@@ -1,11 +1,5 @@
 {
-  "header": {
-    "cart": "Cart",
-    "products": "Products",
-    "users": "Users",
-    "signIn": "SignIn",
-    "signUp": "SignUp"
-  },
+
   "register": {
     "firstName": "First Name",
     "lastName": "Last Name",
@@ -20,30 +14,6 @@
     "password": "Password",
     "login": "Login",
     "submitting": "Submitting"
-  },
-  "product": {
-    "Product title": "Products",
-    "Price": "Price",
-    "Description": "Description",
-    "Category": "Category",
-    "TV": "TV",
-    "Phones": "Phones",
-    "Pumps": "Pumps",
-    "Create product": "Create product"
-  },
-  "products": {
-    "Product Name": "Product Name",
-    "Quantity": "Quantity",
-    "Price (Eur)": "Price (Eur)",
-    "Description": "Description",
-    "Actions": "Actions"
-  },
-  "footer": {
-    "Eshop Footer": "Eshop Footer English"
-  },
-  "landing": {
-    "key": "Welcome to react",
-    "keyWithParam": "Welcome to React {{name}} {{lastname}}"
   },
 
   "tagItems": {
@@ -60,11 +30,41 @@
 
   "comments": {
     "NewComment": "Create New Comment",
+    "cContent": "Content",
     "UpdateComment": "Update",
     "DeleteComment": "Delete",
     "CommentsMain": "Comments",
     "goBackToLibrary": "To Library"
+  },
 
+  "footer": {
+    "NewComment": "Your Website",
+    "GpsAtmintinė": "GPS Atmintinė"
+  },
+
+  "gpsTags": {
+    "fName": "Name",
+    "fLatitude": "Latitude",
+    "fLongitude": "Longitude",
+    "fRealPlaceName": "Real Place Name",
+    "fDescription": "Description",
+    "fHasShed": "Has Shed",
+    "fHasFireplace": "Has Fireplace",
+    "fHasWC": "Has WC",
+    "fHasLakeNearby": "Has Lake Nearby",
+    "fUpdateTag": "Update",
+    "fDeleteTag": "Delete"
+  },
+  "header": {
+    "hMainName": "GPS Atmintinė",
+    "hHome": "Home",
+    "hLibrary": "Library",
+    "hAccount": "Account",
+    "hUsers": "Users",
+    "hRegistration": "Registration",
+    "hWelcome": "Welcome",
+    "hLogout": "Logout",
+    "hLogin": "Login"
   }
 }
 

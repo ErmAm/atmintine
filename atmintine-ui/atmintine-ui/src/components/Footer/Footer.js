@@ -3,13 +3,13 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
+import {useTranslation} from "react-i18next";
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -27,12 +27,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default () => {
+
+    const {t} = useTranslation('footer');
+
     const classes = useStyles();
 
     return (
         <footer className={classes.footer}>
             <Container maxWidth="sm">
-                <Typography variant="body1">GPS Atmintinė</Typography>
+                <Typography variant="body1">{t('NewComment')}</Typography>
+
                 <Copyright/>
             </Container>
         </footer>

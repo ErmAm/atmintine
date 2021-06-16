@@ -8,11 +8,6 @@ import FormikInput from "../UserLogin/FormikInput/FormikInput";
 import {addGpsTag} from '../../api/GpsTagAPI'
 
 
-const takeInFromProps = ({id}) => {
-    console.log(id)
-
-
-}
 
 
 // const ChangeUserPage = () => {
@@ -35,7 +30,6 @@ const takeInFromProps = ({id}) => {
 
 
 
-
 const validationSchema = Yup.object().shape({
     name: Yup.string()
         .min(3)
@@ -51,9 +45,6 @@ const validationSchema = Yup.object().shape({
     hasWC: Yup.boolean(),
     hasLakeNearby: Yup.boolean()
 })
-
-
-
 
 
 

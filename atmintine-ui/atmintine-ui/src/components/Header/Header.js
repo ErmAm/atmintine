@@ -12,6 +12,7 @@ import {Link as RouterLink} from "react-router-dom";
 import LanguageSwitcher from "../translation/LanguageSwitcher";
 
 import {logout as userLogaut} from "../../store/slices/userSlice"
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -32,9 +33,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-
-
-
 export default () => {
     const classes = useStyles()
 
@@ -42,20 +40,14 @@ export default () => {
 
     // const userFullName = useSelector(state => state.user.loggedInUser?.fullName)
     const loggedInUser  = useSelector(state => state.user.loggedInUser)
-
-    // Dispatchą susitvarkyt
-    //
-    // const logoutas =()=>{
-    //     userLogaut
-    // }
-
+    const {t} = useTranslation('header');
 
     return (
         <>
             <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                       GPS Atmintinė
+                      {t('hMainName')}
                     </Typography>
                     <nav>
                         <Link to="/"
@@ -63,7 +55,7 @@ export default () => {
                               variant="button"
                               color="textPrimary"
                               className={classes.link}>
-                            Home
+                            {t('hHome')}
                         </Link>
 
 
@@ -73,7 +65,7 @@ export default () => {
                               variant="button"
                               color="textPrimary"
                               className={classes.link}>
-                            Library
+                            {t('hLibrary')}
                         </Link>
 
                         {
@@ -84,10 +76,10 @@ export default () => {
                                   variant="button"
                                   color="textPrimary"
                                   className={classes.link}>
-                                Account
+                                {t('hAccount')}
                             </Link>: ""
                         }
-                        {/*Čia tiesiog apasuagotas linkas*/}
+
                         {
                             loggedInUser?.roles.includes("ADMIN") ?
                                 <Link variant="button"
@@ -96,67 +88,38 @@ export default () => {
                                       className={classes.link}
                                       activeClassName={classes.active}
                                       component={NavLink}>
-                                    {/*{t('users')}*/}
-                                    Users
+                                    {t('hUsers')}
                                 </Link> : ""
                         }
 
-                        {/*{*/}
-                        {/*loggedInUser.roles.includes('ADMIN')?*/}
-                        {/*<Link to="/users"*/}
-                        {/*      component={NavLink}*/}
-                        {/*      activeClassName={classes.active}*/}
-                        {/*      variant="button"*/}
-                        {/*      color="textPrimary"*/}
-                        {/*      className={classes.link}>*/}
-                        {/*    Users*/}
-                        {/*</Link> : ""*/}
-                        {/*}*/}
-
-                        {/*Čia truputi magija su parametrais nutinka*/}
                         <Link to="/registration"
                                     component={NavLink}
                                     activeClassName={classes.active}
                                     variant="button"
                                     color="textPrimary"
                                     className={classes.link}>
-                            Registration
+                            {t('hRegistration')}
                         </Link>
 
-
-
-                        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-
-                        </Link>
                     </nav>
-                    {/*<Button href="/login" color="primary" variant="outlined" className={classes.link}>*/}
-                    {/*    Login*/}
-                    {/*</Button>*/}
 
                     <Box mx={4}>
                         {loggedInUser?.fullName ?
-
                             <>
                                 <Typography variant="h6" component="span">
-                                    Sveiki, {loggedInUser.fullName}
+                                    {t('hWelcome')}, {loggedInUser.fullName}
                                 </Typography>
 
                                 <Button color="secondary" onClick={() => {
                                     window.location.href = "/"
                                 }} variant="contained" className={classes.link}>
-                                    Logout
+                                    {t('hLogout')}
                                 </Button>
                             </>
                             :
                             <>
                                 <Button color="primary" to="/login" variant="contained" component={RouterLink}>
-                                    Login
-                                </Button>
-
-                                {/* TODO Šitą  reikia sutvarkyti kad selektorius veiktų.*/}
-
-                                <Button href="#" color="secondary" variant="contained" className={classes.link}>
-                                    {/*{t('signIn')}*/}
+                                    {t('hLogin')}
                                 </Button>
                             </>
                         }

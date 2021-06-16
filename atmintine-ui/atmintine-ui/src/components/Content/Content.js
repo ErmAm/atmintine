@@ -31,8 +31,6 @@ export default () => (
                 <RegistrationPage/>
             </Route>
 
-            {/* Čia siuntimas per path parametrus */}
-
             <SecuredRoute path="/library/:id" roles={["ADMIN","USER"]}>
                 <LibraryPage/>
             </SecuredRoute>
@@ -57,13 +55,7 @@ export default () => (
                 <Users/>
             </SecuredRoute>
 
-
         </Switch>
-            {/*<h2>Contentas</h2>*/}
-            {/*/!*<LoginForm/>*!/*/}
-            {/*<TestWithFormkAndYup/>*/}
-            {/*<UserRegistration/>*/}
-
 
     </>
 )

@@ -50,30 +50,7 @@ const AddCommentForTagItem = () => {
     return (
         <>
 
-            {/*<h1>Blogo itemo id: {id}</h1>*/}
-            {/*<h2>useris: {loggedInUser?.username}</h2>*/}
-            {/*{*/}
-            {/*    loading ?*/}
-            {/*        <TableRow>*/}
-            {/*            <TableCell colSpan={2} align="center">*/}
-            {/*                <CircularProgress/>*/}
-            {/*            </TableCell>*/}
-            {/*        </TableRow> :*/}
-            {/*        <TextareaAutosize*/}
-            {/*            aria-label="minimum height"*/}
-            {/*            rowsMin={10}*/}
-            {/*            placeholder="Write new comment here"*/}
-            {/*            style ={{width: '100%'}}*/}
-            {/*            inputStyle ={{width: '100%'}}*/}
-            {/*            onChange={event => setTextAreaContent(event.target.value)}*/}
-            {/*        />*/}
-            {/*}*/}
 
-            {/*<Button color="primary"*/}
-            {/*        variant="contained"*/}
-            {/*        to={"/tagItemService/" + id}*/}
-            {/*        onClick={() => addCommentHandler()}*/}
-            {/*>Submit</Button>*/}
 
         </>
     )

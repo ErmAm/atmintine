@@ -39,14 +39,12 @@ const validationSchema = Yup.object().shape({
 
 const GpsTagUpdate = () => {
 
-    const {t} = useTranslation('');
+    const {t} = useTranslation('gpsTags');
     const {id} = useParams();
     const history = useHistory();
 
-    // 1. susikuriam tago elemento steitą
     const [tagItem, setTagItem] = useState({})
     const [loading, setLoading] = useState(true);
-
 
     const initialValues = {
         id:id,
@@ -60,7 +58,6 @@ const GpsTagUpdate = () => {
         hasWC: tagItem.hasWC,
         hasLakeNearby: tagItem.hasLakeNearby
     };
-
 
 
     useEffect(() => {
@@ -85,13 +82,11 @@ const GpsTagUpdate = () => {
     };
 
 
-
     const deleteGpsTagButtonHandling =(id) =>{
         deleteGpsTag(id)
             .then(() => {
                 history.push('/library')
             })
-            .finally(console.log("ištrintas"))
     }
 
     console.log(tagItem)
@@ -101,20 +96,7 @@ const GpsTagUpdate = () => {
         <Formik initialValues={initialValues}
                 enableReinitialize
                 validationSchema={validationSchema}
-
-                // onSubmit={(values, actions) => {
-                //     updateGpsTag(tagItem)
-                //         .then(response => response.data)
-                //         .finally(() => {actions.setSubmitting(false)
-                //
-                //         })
-                // }}
-                onSubmit={resetFormInfo}
-
-
-        >
-
-            {/*TODO reikia sutvarkyti checkboxus*/}
+                onSubmit={resetFormInfo}>
 
             {props => (
                 <>
@@ -131,47 +113,43 @@ const GpsTagUpdate = () => {
                                 <Form style={{margin: 20, padding: 10}}>
                                     <div>
                                         <FormikInput name="name"
-                                                     label="Name"
+                                                     label={t('fName')}
                                                      error={props.touched.name && !!props.errors.name}
-                                                     placeholder="Name"/>
+                                                     placeholder={t('fName')}/>
                                     </div>
                                     <div>
                                         <FormikInput name="latitude"
-                                                     label="Latitude"
+                                                     label={t('fLatitude')}
                                                      error={props.touched.name && !!props.errors.name}
-                                                     placeholder="Latitude"/>
+                                                     placeholder={t('fLatitude')}/>
                                     </div>
                                     <div>
                                         <FormikInput name="longitude"
-                                                     label="Longitude"
+                                                     label={t('fLongitude')}
                                                      error={props.touched.surname && !!props.errors.surname}
-                                                     placeholder="Longitude"/>
+                                                     placeholder={t('fLongitude')}/>
                                     </div>
                                     <div>
                                         <FormikInput name="realPlaceName"
-                                                     label="Real Place Name"
+                                                     label={t('fRealPlaceName')}
                                                      error={props.touched.email && !!props.errors.email}
-                                                     placeholder="Real Place Name"/>
+                                                     placeholder={t('fRealPlaceName')}/>
                                     </div>
                                     <div>
                                         <FormikInput name="description"
-                                                     label="Description"
+                                                     label={t('fDescription')}
                                                      error={props.touched.password && !!props.errors.password}
-                                                     placeholder="Description"
-                                            // type="password"
-                                        />
+                                                     placeholder={t('fDescription')}/>
                                     </div>
 
-                                    {/*Čia reikia tiesiog savo susigeneruoti formas */}
                                     <div>
                                         <FormControl
                                             error={props.touched.repeatPassword && !!props.errors.repeatPassword}
                                             fullWidth>
-                                            <InputLabel htmlFor="hasShed">"Has Shed"</InputLabel>
+                                            <InputLabel htmlFor="hasShed">{t('fHasShed')}</InputLabel>
                                             <Field id="hasShed"
                                                    name="hasShed"
-                                                   placeholder="Has Shed"
-                                                // type="checkbox"
+                                                   placeholder={t('fHasShed')}
                                                    {...props} as={Input}
                                             />
                                             <ErrorMessage name="hasShed" component={FormHelperText}/>
@@ -182,59 +160,43 @@ const GpsTagUpdate = () => {
                                     <p></p>
                                     <p></p>
 
-                                    {/*<div>*/}
-                                    {/*    <FormikInput name="hasShed"*/}
-                                    {/*                 label="Has Shed"*/}
-                                    {/*                 error={props.touched.repeatPassword && !!props.errors.repeatPassword}*/}
-                                    {/*                 placeholder="Has Shed"*/}
-                                    {/*                 type="checkbox"*/}
-                                    {/*    />*/}
-                                    {/*</div>*/}
-
                                     <div>
                                         <FormikInput name="hasFireplace"
-                                                     label="Has Fireplace"
+                                                     label={t('fHasFireplace')}
                                                      error={props.touched.repeatPassword && !!props.errors.repeatPassword}
-                                                     placeholder="Has Fireplace"
-                                            // type="checkbox"
-                                        />
+                                                     placeholder={t('fHasFireplace')}/>
                                     </div>
 
                                     <div>
                                         <FormikInput name="hasWC"
-                                                     label="Has WC"
+                                                     label={t('fHasWC')}
                                                      error={props.touched.repeatPassword && !!props.errors.repeatPassword}
-                                                     placeholder="Has WC"
-                                            // type="checkbox"
-                                        />
+                                                     placeholder={t('fHasWC')}/>
                                     </div>
 
                                     <div>
                                         <FormikInput name="hasLakeNearby"
-                                                     label="Has Lake Nearby"
+                                                     label={t('fHasLakeNearby')}
                                                      error={props.touched.repeatPassword && !!props.errors.repeatPassword}
-                                                     placeholder="Has Lake Nearby"
-                                            // type="checkbox"
-                                        />
+                                                     placeholder={t('fHasLakeNearby')}/>
                                     </div>
                                     <div style={{padding: 10}}>
                                         {!props.isSubmitting ?
                                             <Button variant="contained"
                                                     color="primary"
                                                     type="submit"
-                                            >Update</Button>
+                                            >{t('fUpdateTag')}</Button>
                                             :
                                             <span>Submitting...</span>}
 
                                         {!props.isSubmitting ?
                                             <Button variant="outlined"
                                                     color="primary"
-                                                    onClick={() => deleteGpsTagButtonHandling(id)}>Delete
+                                                    onClick={() => deleteGpsTagButtonHandling(id)}>{t('fDeleteTag')}
                                             </Button>
                                             :""
 
                                         }
-
                                     </div>
                                 </Form>
                             </Paper>
@@ -243,7 +205,6 @@ const GpsTagUpdate = () => {
                 </>
             )}
         </Formik>
-
 
     )
 }

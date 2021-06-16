@@ -9,8 +9,7 @@ const Users = () => {
     return (
         <>
 
-
-                        <h1>Hello!</h1>
+                        <h1>Work in progress</h1>
 
         </>
     )

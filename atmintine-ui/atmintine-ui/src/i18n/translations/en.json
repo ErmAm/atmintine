@@ -1,5 +1,4 @@
 {
-
   "register": {
     "firstName": "First Name",
     "lastName": "Last Name",
@@ -72,7 +71,7 @@
   "globalsPage": {
     "gNewComment": "Create",
     "gSubmit": "Submitting...",
-    "gWelcome": "Wlcome To GPS Logger",
+    "gWelcome": "Wellcome To GPS Logger",
     "gUsername": "Username",
     "Password": "Password",
     "gSubmit": "Submit"

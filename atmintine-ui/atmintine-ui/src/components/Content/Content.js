@@ -20,12 +20,14 @@ export default () => (
             <Route exact path="/">
                 <IntroPage/>
             </Route>
-            <Route exact path="/library">
+
+            <SecuredRoute exact path="/library" roles={["ADMIN","USER"]}>
                 <LibraryPage/>
-            </Route>
-            <Route exact path="/profile">
+            </SecuredRoute>
+
+            <SecuredRoute exact path="/profile" roles={["ADMIN","USER"]}>
                 <ProfilePage/>
-            </Route>
+            </SecuredRoute>
 
             <Route exact path="/registration">
                 <RegistrationPage/>
@@ -39,17 +41,17 @@ export default () => (
                 <LoginPage/>
             </Route>
 
-            <Route exact path="/tagItemService/:id">
+            <SecuredRoute exact path="/tagItemService/:id" roles={["ADMIN","USER"]}>
                 <TagItemServicePage/>
-            </Route>
+            </SecuredRoute>
 
-            <Route exact path="/updateCommentService/:id">
+            <SecuredRoute exact path="/updateCommentService/:id" roles={["ADMIN","USER"]}>
                 <CommentItem/>
-            </Route>
+            </SecuredRoute>
 
-            <Route exact path="/createCommentPage/:id">
+            <SecuredRoute exact path="/createCommentPage/:id" roles={["ADMIN","USER"]}>
                 <CommentPage/>
-            </Route>
+            </SecuredRoute>
 
             <SecuredRoute path="/users" roles={["ADMIN"]}>
                 <Users/>

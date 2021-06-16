@@ -14,7 +14,7 @@ i18n
         load: 'languageOnly',
         ns:[],
         fallbackLng: "en",
-        whitelist: ['en', 'lt', 'de'],
+        whitelist: ['en', 'lt'],
         interpolation: {
             escapeValue: false
         }

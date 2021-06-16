@@ -8,7 +8,7 @@ const ReduxGrabber = () => {
 
     return (
         <>
-            <h3> I am redux grabber</h3>
+            <h3> Work in progress</h3>
             <pre>
                 {JSON.stringify(tagList, null,2)}
             </pre>

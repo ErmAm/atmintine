@@ -65,7 +65,8 @@ const CommentPage = () => {
                                         </div>
 
                                         <div>
-                                            <FormikInput name="content" label="Contetn"
+                                            <FormikInput name="content"
+                                                         label={t('cContent')}
                                                          error={props.touched.content && !!props.errors.content}
                                                          multiline rows={6}/>
                                         </div>

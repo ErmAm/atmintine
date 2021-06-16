@@ -74,7 +74,8 @@
     "gWelcome": "Wellcome To GPS Logger",
     "gUsername": "Username",
     "Password": "Password",
-    "gSubmit": "Submit"
+    "gSubmit": "Submit",
+    "gEnetCoordinates": "Please enter the coordinates for saving"
   }
 }
 

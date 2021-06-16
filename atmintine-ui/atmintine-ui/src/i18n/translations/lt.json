@@ -71,7 +71,8 @@
       "gWelcome": "Sveiki atvykę į GPS atmintinę",
       "gUsername": "Vartotojo vardas",
       "Password": "Slaptažodis",
-      "gSubmit": "Siųsti"
+      "gSubmit": "Siųsti",
+      "gEnetCoordinates": "Suveskite koordinates saugojimui"
     }
 
 }

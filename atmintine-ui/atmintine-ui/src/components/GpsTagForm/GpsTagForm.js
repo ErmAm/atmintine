@@ -138,15 +138,6 @@ export default () => (
                         <p></p>
                         <p></p>
 
-                            {/*<div>*/}
-                            {/*    <FormikInput name="hasShed"*/}
-                            {/*                 label="Has Shed"*/}
-                            {/*                 error={props.touched.repeatPassword && !!props.errors.repeatPassword}*/}
-                            {/*                 placeholder="Has Shed"*/}
-                            {/*                 type="checkbox"*/}
-                            {/*    />*/}
-                            {/*</div>*/}
-
                             <div>
                                 <FormikInput name="hasFireplace"
                                              label="Has Fireplace"

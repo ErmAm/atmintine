@@ -85,7 +85,7 @@ const CommentItem = ({author, content}) => {
                                                     <Button color="primary"
                                                             variant="contained"
                                                             type="submit">{t('UpdateComment')}</Button> :
-                                                    <span>Submitting...</span>}
+                                                    <span>{t('gSubmit')}</span>}
 
                                                 <Button color="primary"
                                                         variant="contained"

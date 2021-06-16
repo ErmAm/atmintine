@@ -43,10 +43,6 @@ export default () => (
     }}
             validationSchema={validationSchema}
 
-
-        //Submitas logika
-    // TODO čia vyksta submitas formos
-
     onSubmit={(values,actions) =>{
         createUser(values)
             .then(response => response.data)
@@ -61,6 +57,7 @@ export default () => (
     >
         {props => (
             <>
+
                 <Container maxWidth={"sm"}>
                     <Paper elevation={3}>
                         <Form style={{margin: 20, padding:10}}>

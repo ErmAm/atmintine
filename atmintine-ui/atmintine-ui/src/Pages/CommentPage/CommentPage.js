@@ -70,17 +70,6 @@ const CommentPage = () => {
                                                          multiline rows={6}/>
                                         </div>
 
-                                        {/*<div>*/}
-                                        {/*    <FormikInput name="username" label="Product name"*/}
-                                        {/*                 error={props.touched.name && !!props.errors.name}/>*/}
-                                        {/*</div>*/}
-
-                                        {/*<div>*/}
-                                        {/*    <FormikInput name="price" label="Product price"*/}
-                                        {/*                 error={props.touched.price && !!props.errors.price}/>*/}
-                                        {/*</div>*/}
-
-
 
 
                                         <Grid align="center" container justify="center" alignItems="center">

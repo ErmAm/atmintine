@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
 
     const {t} = useTranslation('footer');
-
     const classes = useStyles();
 
     return (

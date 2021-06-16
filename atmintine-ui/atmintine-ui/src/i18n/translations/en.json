@@ -9,12 +9,6 @@
     "register": "Register",
     "submitting": "Submitting"
   },
-  "login": {
-    "email": "Email",
-    "password": "Password",
-    "login": "Login",
-    "submitting": "Submitting"
-  },
 
   "tagItems": {
     "PersonalName": "Personal name",
@@ -65,6 +59,15 @@
     "hWelcome": "Welcome",
     "hLogout": "Logout",
     "hLogin": "Login"
+  },
+  "content": {
+    "coDetails": "Details"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "submitting": "Submitting"
   }
 }
 

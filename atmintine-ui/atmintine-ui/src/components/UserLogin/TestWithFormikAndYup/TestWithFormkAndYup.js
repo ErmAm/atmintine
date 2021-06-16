@@ -23,7 +23,6 @@ const validationSchema = Yup.object().shape({
 
 
 export default () => (
-    // <div>Formic test</div>
     <Formik
         initialValues={{
             name: '',
@@ -75,15 +74,10 @@ export default () => (
                                          multiline rows={3}/>
                         </div>
 
-                        {/*<Grid container={3}>*/}
-                        {/*    <Grid item xs={3}>*/}
-
                                 {!props.isSubmitting ? <Button variant="contained"
                                                                color="primary"
                                                                type="submit">Submit</Button> :
                                     <span>Submitting...</span>}
-                        {/*    </Grid>*/}
-                        {/*</Grid>*/}
 
                     </Form>
                     </Paper>

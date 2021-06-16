@@ -4,7 +4,6 @@ import tagItem from "../../store/slices/tagItemSlice";
 
 const ReduxGrabber = () => {
 
-    //čia hooksas kuris traukia info.
     const tagList = useSelector(state => state.tagItem)
 
     return (
@@ -13,9 +12,6 @@ const ReduxGrabber = () => {
             <pre>
                 {JSON.stringify(tagList, null,2)}
             </pre>
-
-
-
         </>
     )
 }

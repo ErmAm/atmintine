@@ -3,7 +3,7 @@ import GpsTagForm from "../../components/GpsTagForm/GpsTagForm";
 import {useParams} from "react-router-dom";
 import GpsTagUpdate from "../../components/GpsTag/GpsTagUpdate";
 import {Box} from "@material-ui/core";
-
+import CommentFiller from "../../components/Comments/CommentFiller";
 
 
 const TagItemServicePage = () => {
@@ -19,7 +19,8 @@ const TagItemServicePage = () => {
             <h4> DEBUG Atiisustas id {id}</h4>
 
             <Box m={2} pt={3}>
-            <GpsTagUpdate commonProps={id}/>
+                <GpsTagUpdate commonProps={id}/>
+                <CommentFiller commonProps={id}/>
             </Box>
 
 

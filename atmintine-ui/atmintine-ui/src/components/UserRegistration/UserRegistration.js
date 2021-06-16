@@ -35,7 +35,11 @@ export default () => (
         surname: '',
         email: '',
         password: '',
-        repeatPassword: ''
+        repeatPassword: '',
+        roles:[{
+            id: '',
+            name: '',
+            authority: ''},]
     }}
             validationSchema={validationSchema}
 
@@ -48,6 +52,7 @@ export default () => (
             .then(response => response.data)
             .catch(error =>console.log("Klaidos", error))
             .finally(()=>actions.setSubmitting(false))
+
     }}
 
 

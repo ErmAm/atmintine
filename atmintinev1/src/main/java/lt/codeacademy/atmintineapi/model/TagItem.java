@@ -8,6 +8,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -52,7 +53,7 @@ public class TagItem {
     private Boolean hasLakeNearby;
 
     @Column(name="comments")
-    @OneToMany
-    private List<Comment> comments;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Comment> comments=new ArrayList<>();
 
 }

@@ -29,6 +29,12 @@ public class CommentController {
         return commentService.getComments();
     }
 
+    @GetMapping(value = "/bytag/{UUID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Comment> getTagItemsForUserID(@PathVariable("UUID") UUID uuid) {
+        return commentService.getAllCommentsById(uuid);
+    }
+
+
     @GetMapping(value = "/{UUID}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Comment getTagItem(@PathVariable("UUID") UUID uuid) {
         return commentService.getComment(uuid);

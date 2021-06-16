@@ -32,8 +32,8 @@ VALUES
 #
 # ;
 #
-INSERT INTO comment(id,content,username)
-VALUES ('0000000c-0000-0000-000c-000000000001','Visoks tekstas','pleb1')
+INSERT INTO comment(id,content,username,tag_item_id)
+VALUES ('0000000c-0000-0000-000c-000000000001','Visoks tekstas','pleb1','00000000-0000-000a-000f-000000000001')
 ;
 
 

@@ -25,4 +25,7 @@ public class Comment {
     private String username;
 
     private String content;
+
+    @ManyToOne
+    private TagItem tagItem;
 }

@@ -1,10 +1,9 @@
 package lt.codeacademy.atmintineapi.service;
 
 import lt.codeacademy.atmintineapi.exception.CommentNotFoundException;
-import lt.codeacademy.atmintineapi.exception.TagItemNotFoundException;
 import lt.codeacademy.atmintineapi.model.Comment;
-import lt.codeacademy.atmintineapi.model.TagItem;
 import lt.codeacademy.atmintineapi.repository.CommentRepository;
+import lt.codeacademy.atmintineapi.repository.TagItemRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +12,12 @@ import java.util.UUID;
 @Service
 public class CommentService {
 
-    private CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
+    private final TagItemRepository tagItemRepository;
 
-    public CommentService(CommentRepository commentRepository) {
+    public CommentService(CommentRepository commentRepository, TagItemRepository tagItemRepository) {
         this.commentRepository = commentRepository;
+        this.tagItemRepository = tagItemRepository;
     }
 
 
@@ -33,6 +34,11 @@ public class CommentService {
     public Comment getComment(UUID id){
         return commentRepository.findById(id)
                 .orElseThrow(() -> new CommentNotFoundException(id.toString()));
+    }
+
+    public List<Comment> getAllCommentsById(UUID id){
+        return commentRepository.findAllByTagItemId(id).orElseThrow(
+                ()-> new CommentNotFoundException(id.toString()));
     }
 
 

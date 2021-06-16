@@ -31,13 +31,8 @@ const useStyle = makeStyles({
     }
 })
 
-// props = { addToCart: addToCart }
-// tunedAddToCart = (product) => dispatch(addToCart(product))
-// const Products = ({ tunedAddToCart }) => {
 
-
-
-const LibraryFiller = ({addToTagItemList}) => {
+const LibraryFiller = () => {
 
     const [gpsTagList, setGpsTagList] = useState([])
     const [loading, setLoading] = useState(true)
@@ -58,39 +53,8 @@ const LibraryFiller = ({addToTagItemList}) => {
     const { t } = useTranslation('tagItems');
 
 
-    const handleOnClick = (tagItem) => {
-        addToTagItemList(tagItem)
-
-    }
-
-
-
-    const deleteGPSTAG = (tagItem) => {
-        deleteGpsTag(tagItem.id)
-            .finally(
-                setGpsTagList(gpsTagList.filter(localTag => localTag.id !== tagItem.id))
-            )
-    }
-
-    const updateGpsTag = (tagItem) => {
-        updateGpsTag(tagItem.id)
-            .finally(
-                setGpsTagList(gpsTagList.filter(localTag => localTag.id !== tagItem.id))
-            )
-    }
-
-
-
     return (
         <>
-            {/*<h1>I am librarry filler component</h1>*/}
-            {/*<pre>*/}
-            {/*    {JSON.stringify(gpsTagList, null,2)}*/}
-            {/*</pre>*/}
-
-            {/*classes={classes.table}*/}
-
-            {/*<Container maxWidth="xd">*/}
             <Container>
                 <TableContainer component={Paper}>
 

@@ -9,6 +9,8 @@ import ProfilePage from "../../Pages/ProfilePage/ProfilePage";
 import Users from "../../Pages/Users/Users";
 import SecuredRoute from "../SecuredRoute/SecuredRoute";
 import TagItemServicePage from "../../Pages/TagItemServicePage/TagItemServicePage";
+import CommentItem from "../Comments/CommentItem";
+import CommentPage from "../../Pages/CommentPage/CommentPage";
 
 export default () => (
     <>
@@ -40,6 +42,14 @@ export default () => (
 
             <Route exact path="/tagItemService/:id">
                 <TagItemServicePage/>
+            </Route>
+
+            <Route exact path="/updateCommentService/:id">
+                <CommentItem/>
+            </Route>
+
+            <Route exact path="/createCommentPage/:id">
+                <CommentPage/>
             </Route>
 
             <SecuredRoute path="/users" roles={["ADMIN"]}>

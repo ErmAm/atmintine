@@ -94,13 +94,7 @@ const GpsTagUpdate = () => {
             .finally(console.log("ištrintas"))
     }
 
-    // const deleteGpsTag = (tagItem) => {
-    //     deleteGpsTag(tagItem.id)
-    //         .finally(
-    //             setGpsTagList(gpsTagList.filter(localTag => localTag.id !== tagItem.id))
-    //         )
-    // }
-
+    console.log(tagItem)
 
     return (
 

@@ -4,12 +4,16 @@ import lt.codeacademy.atmintineapi.exception.UserNotFoundException;
 import lt.codeacademy.atmintineapi.model.Role;
 import lt.codeacademy.atmintineapi.model.User;
 import lt.codeacademy.atmintineapi.repository.UserRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -23,6 +27,7 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
+
 
 
 //    @Override
@@ -47,8 +52,14 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
+
+
     //    add
     public void addNewUser(User user) {
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+
         try {
             if (user != null) {
                 userRepository.save(user);
@@ -73,6 +84,8 @@ public class UserService implements UserDetailsService {
     public void delete(UUID id) {
         userRepository.deleteById(id);
     }
+
+
 
 
 }

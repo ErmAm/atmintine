@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
+    "google-map-react": "^2.1.9",
     "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "^6.1.1",
     "lodash": "^4.17.21",

@@ -11,10 +11,8 @@ import {useHistory,useLocation} from "react-router-dom";
 
 import {login as setLogin} from '../../store/slices/userSlice'
 
-
 const LoginPage = () => {
 
-    //Dispačerio reikia
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
@@ -22,12 +20,8 @@ const LoginPage = () => {
 
     const postLogin = (loginData, {setSubmitting}) => {
         setSubmitting(true)
-
         login(loginData)
             .then(({data: loggedInUser, headers: {authorization}}) => {
-                // console.log("JWT", authorization)
-                // console.log("JWT users: ", loggedInUser)
-                // console.log("JWT autorizacijos headeris: ", authorization)
                 dispatch(
                     setLogin({
                         loggedInUser,
@@ -36,10 +30,6 @@ const LoginPage = () => {
                 const from = location.state?.from
 
                 history.push(from || '/')
-
-
-            //  1.1  po sėkmingo loginor eikia iškviesti redirecto funckiją.
-            // history.push('/')
 
             })
             .finally(() => setSubmitting(false))

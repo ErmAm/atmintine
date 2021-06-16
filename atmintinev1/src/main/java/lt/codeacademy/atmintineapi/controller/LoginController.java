@@ -1,6 +1,5 @@
 package lt.codeacademy.atmintineapi.controller;
 
-
 import lt.codeacademy.atmintineapi.dto.LoggedInUserDto;
 import lt.codeacademy.atmintineapi.model.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

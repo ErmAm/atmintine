@@ -11,7 +11,6 @@ public interface TagItemRepository extends JpaRepository<TagItem, UUID> {
 
     List<TagItem> findByName(String name);
 
-//    Čia pagal aprašą ieškom tokio tago.
     List<TagItem> findByNameLikeOrDescriptionLike(String name, String description);
 
 }

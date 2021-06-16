@@ -45,8 +45,6 @@ public class TagItemService {
     }
 
 
-
-//    TODO Čia biški logika keista man reikia vėliau apsižiūrėti
     public TagItem update(TagItem tagItem){
         return tagItemRepository.save(tagItem);
     }
@@ -55,8 +53,7 @@ public class TagItemService {
         tagItemRepository.deleteById(id);
     }
 
-//    Pagerinti metodai
-//    Paginated kol kas nereikia.
+
     public Page<TagItem> getProductsPaginated(Pageable pageable) {
         return tagItemRepository.findAll(pageable);
     }

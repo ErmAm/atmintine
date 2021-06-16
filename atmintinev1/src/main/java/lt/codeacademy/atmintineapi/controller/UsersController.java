@@ -1,10 +1,10 @@
 package lt.codeacademy.atmintineapi.controller;
 
-import lt.codeacademy.atmintineapi.model.TagItem;
 import lt.codeacademy.atmintineapi.model.User;
 import lt.codeacademy.atmintineapi.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,6 +22,7 @@ public class UsersController {
     }
 
     @GetMapping("all")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public List<User> getAllUsersInDB(){
         return userService.getAllUsers();
     }
@@ -29,24 +30,23 @@ public class UsersController {
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void createNewUSer(@Valid @RequestBody User user){
-//        TODO sukurti servisą paimantį iš formos info.
         userService.addNewUser(user);
     }
 
-
-//    like metodai, čia biški bardakėlis bet kol kas taip reikia
-
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping(value = "/{UUID}", produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUser(@PathVariable("UUID") UUID uuid) {
         return userService.getUser(uuid);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping(value = "/{UUID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable("UUID") UUID uuid) {
         userService.delete(uuid);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PutMapping
     public User updateTagItem(@Valid @RequestBody User Uesr) {
         return userService.update(Uesr);

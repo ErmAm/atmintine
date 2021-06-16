@@ -11,13 +11,14 @@ import SecuredRoute from "../SecuredRoute/SecuredRoute";
 import TagItemServicePage from "../../Pages/TagItemServicePage/TagItemServicePage";
 import CommentItem from "../Comments/CommentItem";
 import CommentPage from "../../Pages/CommentPage/CommentPage";
+import IntroPage from "../../Pages/IntroPage/IntroPage";
 
 export default () => (
     <>
 
         <Switch>
             <Route exact path="/">
-                <LoginPage/>
+                <IntroPage/>
             </Route>
             <Route exact path="/library">
                 <LibraryPage/>
@@ -32,9 +33,9 @@ export default () => (
 
             {/* Čia siuntimas per path parametrus */}
 
-            <Route path="/library/:id">
+            <SecuredRoute path="/library/:id" roles={["ADMIN","USER"]}>
                 <LibraryPage/>
-            </Route>
+            </SecuredRoute>
 
             <Route path="/login">
                 <LoginPage/>

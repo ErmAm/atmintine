@@ -6,19 +6,22 @@ import {Box} from "@material-ui/core";
 import CommentFiller from "../../components/Comments/CommentFiller";
 
 
+
+
 const TagItemServicePage = () => {
 
     const {t} = useTranslation('');
 
     const {id} = useParams()
 
-    // const commonProps = {id};
+
 
     return (
         <>
-            <h4> DEBUG Atiisustas id {id}</h4>
-
             <Box m={2} pt={3}>
+
+
+
                 <GpsTagUpdate commonProps={id}/>
                 <CommentFiller commonProps={id}/>
             </Box>

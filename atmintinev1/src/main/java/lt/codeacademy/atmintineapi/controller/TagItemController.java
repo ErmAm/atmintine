@@ -22,13 +22,13 @@ public class TagItemController {
         this.tagItemService = tagItemService;
     }
 
-    //    Šitas susirenka viską viską
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public List<TagItem> getTagItems() {
         return tagItemService.getTagItems();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping(value = "/{UUID}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TagItem getTagItem(@PathVariable("UUID") UUID uuid) {
         return tagItemService.getTagItem(uuid);
@@ -44,18 +44,21 @@ public class TagItemController {
         return tagItemService.findTagItem(query);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public void createTagItem(@Valid @RequestBody TagItem tagItem) {
         tagItemService.addTagItem(tagItem);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping(value = "/{UUID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTagItem(@PathVariable("UUID") UUID uuid) {
         tagItemService.delete(uuid);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PutMapping
     public TagItem updateTagItem(@Valid @RequestBody TagItem tagItem) {
         return tagItemService.update(tagItem);

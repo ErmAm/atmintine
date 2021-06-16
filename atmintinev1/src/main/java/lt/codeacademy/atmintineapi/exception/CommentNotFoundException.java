@@ -11,8 +11,6 @@ public class CommentNotFoundException extends RuntimeException{
 
     public CommentNotFoundException(String commentId) {
         this.commentId = commentId;
-
-//        TODO multilang reikia padaryti kažkaip visamekame
         message = String.format("Tokio komentaro %s nera", commentId);
     }
 }

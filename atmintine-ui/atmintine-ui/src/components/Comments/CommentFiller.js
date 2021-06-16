@@ -8,11 +8,7 @@ import {
     Box,
     CircularProgress,
     Paper,
-    Table,
-    TableBody,
     TableCell,
-    TableContainer,
-    TableHead,
     TableRow, TextareaAutosize
 } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -33,7 +29,7 @@ const CommentFiller = () => {
     const [loading, setLoading] = useState(true)
 
 
-    const {t} = useTranslation('');
+    const {t} = useTranslation('comments');
     const {id} = useParams();
     const history = useHistory();
 
@@ -47,70 +43,19 @@ const CommentFiller = () => {
         fetchGPSTagById(id)
             .then(({data}) =>
                 setTagItemFetched(data))
-            // .finally(() => console.log("Užfetcino"))
-
 
     }, [])
-
-    // const addCommentHandler = () => {
-    //     console.log("Išspausdinti tag itema: " + tagItemFetched.id)
-    //     console.log("Išspausdinti tekstoTurinį: " + textAreaContent)
-    //     console.log("Išspausdinti vartotohą: " + loggedInUser.username)
-    //
-    //
-    //     setComment({
-    //         username: loggedInUser.username,
-    //         content: textAreaContent,
-    //         tagItem: tagItemFetched
-    //     })
-    //
-    //     console.log("Komentaro objektas: " + comment)
-    //     addComment(comment)
-    //         .then(() => {
-    //                     setLoading(true)
-    //             history.push("/tagItemService/" + id)
-    //         })
-    //         .finally(() => {
-    //             setLoading(false)
-    //         })
-    // }
 
     const newCommentHandler = () => {
         history.push("/createCommentPage/" + id)
     }
 
-    const updateCommentHandler = (id)=>{
+    const updateCommentHandler = (id) => {
         history.push("/updateCommentService/" + id)
     }
 
 
-    // const addCommentHandler = () => {
-    //
-    //     addComment(comment)
-    //         .then(() => {
-    //             setLoading(true)
-    //             setComment({
-    //                 username: loggedInUser.username,
-    //                 content: textAreaContent,
-    //                 tagItem: tagItemFetched
-    //             })
-    //
-    //
-    //         })
-    //         .finally(() => {
-    //             history.push("/tagItemService/" + id)
-    //             console.log("Hystory turėjo suveikti")
-    //
-    //             setLoading(false)
-    //         })
-    //
-    // }
-
-
-    console.log(commentsList)
-
     const deleteCommentHandler = (idToDelete) => {
-        console.log("Ištrinta: " + idToDelete)
         deleteComment(idToDelete)
             .then(() => {
                 fetchCommentsByID(id).then(({data}) =>
@@ -118,41 +63,18 @@ const CommentFiller = () => {
                     .finally(() => setLoading(false))
             })
             .finally(() => {
-
                 setLoading(false)
             })
     }
 
     return (
         <>
-
-            {/*<CommentItem comentID={comment.id}/>*/}
-
-
             <Container maxWidth="sm">
-                <h1>Comments</h1>
-
-                {/*{*/}
-                {/*    loading ?*/}
-                {/*        <TableRow>*/}
-                {/*            <TableCell colSpan={2} align="center">*/}
-                {/*                <CircularProgress/>*/}
-                {/*            </TableCell>*/}
-                {/*        </TableRow> :*/}
-                {/*        <TextareaAutosize*/}
-                {/*            aria-label="minimum height"*/}
-                {/*            rowsMin={10}*/}
-                {/*            placeholder="Write new comment here"*/}
-                {/*            style={{width: '100%'}}*/}
-                {/*            onChange={event => setTextAreaContent(event.target.value)}*/}
-                {/*        />*/}
-                {/*}*/}
+                <h1>{t('CommentsMain')}</h1>
                 <Button color="primary"
                         variant="contained"
-                    // to={"/tagItemService/" + id}
                         onClick={() => newCommentHandler()}
-                >Create New Comment</Button>
-
+                >{t('NewComment')}</Button>
 
                 {loading ?
                     <TableRow>
@@ -167,21 +89,19 @@ const CommentFiller = () => {
                                 <p id="commentContent">
                                     {comment.content}
                                 </p>
-
                             </Paper>
                             <Button color="primary"
                                     variant="contained"
                                     to={"/updateCommentService/" + comment.id}
                                     onClick={() => updateCommentHandler(comment.id)}
-                            >Update</Button>
+                            >{t('NewComment')}</Button>
 
                             <Button color="primary"
                                     variant="contained"
                                     onClick={() => deleteCommentHandler(comment.id)}
-                            >Delete
+                            >{t('DeleteComment')}
                             </Button>
                         </Box>
-
                     ))
                 }
             </Container>

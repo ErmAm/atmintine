@@ -12,15 +12,12 @@ import * as Yup from "yup";
 import {useSelector} from "react-redux";
 
 
-
-
 const CommentItem = ({author, content}) => {
 
-    const {t} = useTranslation('');
+    const {t} = useTranslation('comments');
     const {id} = useParams();
     const history = useHistory();
 
-    // const loggedInUser = useSelector(state => state.user.loggedInUser)
     const [loading, setLoading] = useState(true);
     const [comment, setComment] = useState({})
 
@@ -33,11 +30,11 @@ const CommentItem = ({author, content}) => {
             .finally(() => {
                 setLoading(false)
             })
-    },[])
+    }, [])
 
 
     const initialValues = {
-        id:comment.id,
+        id: comment.id,
         username: comment.username,
         content: comment.content,
         tagItem: comment.tagItem
@@ -59,8 +56,6 @@ const CommentItem = ({author, content}) => {
         history.push("/tagItemService/" + initialValues.tagItem.id)
     }
 
-
-
     return (
         <>
             <Formik initialValues={initialValues}
@@ -69,12 +64,10 @@ const CommentItem = ({author, content}) => {
             >
                 {props => (
                     <>
-
-                        <Container maxWidth="sm" >
+                        <Container maxWidth="sm">
                             <Paper elevation={3}>
                                 <Box p={2}>
                                     <Form>
-
                                         <div>
                                             <h3>{comment.username}</h3>
                                         </div>
@@ -85,29 +78,18 @@ const CommentItem = ({author, content}) => {
                                                          multiline rows={6}/>
                                         </div>
 
-                                        {/*<div>*/}
-                                        {/*    <FormikInput name="username" label="Product name"*/}
-                                        {/*                 error={props.touched.name && !!props.errors.name}/>*/}
-                                        {/*</div>*/}
-
-                                        {/*<div>*/}
-                                        {/*    <FormikInput name="price" label="Product price"*/}
-                                        {/*                 error={props.touched.price && !!props.errors.price}/>*/}
-                                        {/*</div>*/}
-
-
-
-
                                         <Grid align="center" container justify="center" alignItems="center">
                                             <Grid item>
                                                 {!props.isSubmitting ?
-                                                    <Button color="primary" variant="contained" type="submit">Update</Button> :
+                                                    <Button color="primary"
+                                                            variant="contained"
+                                                            type="submit">{t('UpdateComment')}</Button> :
                                                     <span>Submitting...</span>}
+
                                                 <Button color="primary"
                                                         variant="contained"
                                                         onClick={() => goBack()}
-                                                        // to={"/updateCommentService/" + comment.tagItem.id}
-                                                >GoBack</Button>
+                                                >{t('goBackToLibrary')}</Button>
                                             </Grid>
 
                                         </Grid>
@@ -118,9 +100,7 @@ const CommentItem = ({author, content}) => {
                     </>
                 )}
             </Formik>
-
         </>
-
     )
 }
 

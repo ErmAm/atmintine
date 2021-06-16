@@ -1,15 +1,9 @@
-import {Box, CircularProgress, TableCell, TableRow, TextareaAutosize} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 import {useHistory, useParams} from "react-router-dom";
 import {addComment} from "../../api/CommentsApi";
 import {fetchGPSTagById, fetchGpsTags, updateGpsTag} from "../../api/GpsTagAPI";
-import Container from "@material-ui/core/Container";
-
-
-
 
 const AddCommentForTagItem = () => {
 
@@ -23,13 +17,10 @@ const AddCommentForTagItem = () => {
     const [tagItemFetched,setTagItemFetched] =useState({})
     const [loading, setLoading] = useState(false);
 
-
     useEffect(() => {
         fetchGPSTagById(id)
             .then(({data}) =>
                 setTagItemFetched(data))
-            .finally(() => console.log("Užfetcino"))
-        // .catch(error => console.log("error",error))
     }, [])
 
     const addCommentHandler =() =>{
@@ -54,18 +45,6 @@ const AddCommentForTagItem = () => {
             })
 
     }
-
-
-    // const emptyText = () => (
-    //     <TextareaAutosize
-    //         aria-label="minimum height"
-    //         rowsMin={10}
-    //         placeholder="Write new comment here"
-    //         style ={{width: '100%'}}
-    //         inputStyle ={{width: '100%'}}
-    //         onChange={event => setTextAreaContent(event.target.value)}
-    //     />
-    // )
 
 
     return (

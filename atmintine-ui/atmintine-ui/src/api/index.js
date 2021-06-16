@@ -5,9 +5,6 @@ const HTTP = axios.create({
     baseURL: "/atmintine/api"
 })
 
-
-// Prisidedam tokeną
-
 HTTP.interceptors.request.use(config => {
 
     if (store.getState().user.jwt) {

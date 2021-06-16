@@ -56,6 +56,14 @@
     "HasFireplace": "Has Fireplace",
     "HasLakeNearby": "Has Lake Nearby",
     "HasWC": "Has WC"
+  },
+
+  "comments": {
+    "NewComment": "Create New Comment",
+    "UpdateComment": "Update",
+    "DeleteComment": "Delete",
+    "CommentsMain": "Comments",
+    "goBackToLibrary": "To Library"
 
   }
 }

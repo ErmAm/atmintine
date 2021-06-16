@@ -10,5 +10,4 @@ const updateGpsTag = (updatedGpsTag) => HTTP.put("/tags", updatedGpsTag)
 
 const deleteGpsTag = (id) => HTTP.delete("/tags/" + id)
 
-
 export {fetchGpsTags,fetchGPSTagById,addGpsTag,deleteGpsTag,updateGpsTag}
